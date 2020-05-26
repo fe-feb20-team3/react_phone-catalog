@@ -14,6 +14,7 @@ import { GoodSpecsInfo } from './GoodSpecsInfo';
 import { CardSlider } from '../CardSlider/CardSlider';
 import { LoadSpinner } from '../LoadSpinner';
 import { CartContext } from '../Cart';
+import { FavoritesContext } from '../Favorites';
 
 interface Props {
   goods: Good[];
@@ -32,6 +33,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
   const currentType = goods.find(phone => goodDetail && phone.id === goodDetail.id);
   const sliderItems = sliderFilter(goods, 'alsoLike', match.params.good);
   const { cart } = useContext(CartContext);
+  const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
   const loadGoodDetail = async (goodId: string) => {
     setIsLoading(true);
@@ -65,6 +67,14 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
   const handleImages = (e: React.MouseEvent<HTMLElement>, i: number) => {
     e.preventDefault();
     setActiveImageIndex(i);
+  };
+
+  const handleFavorites = (selectedGood: Good) => {
+    if (isFavorite(selectedGood)) {
+      removeFavorite(selectedGood);
+    } else {
+      addFavorite(selectedGood);
+    }
   };
 
   const price = useMemo(
@@ -157,11 +167,9 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
                       />
                     </div>
                     <div className="GoodPage__Buttons--favorites">
-                      <Icon
-                        name="favorites"
-                        border
-                        inActive={false}
-                      />
+                      <label onClick={() => handleFavorites(good)}>
+                        <Icon name={isFavorite(good) ? 'favorites-filled' : 'favorites'} border inActive={false} />
+                      </label>
                     </div>
                   </div>
                 </section>
