@@ -9,4 +9,4 @@ export const NotAvailable = () => (
       className="NotAvailable__Image"
     />
   </div>
-)
+);

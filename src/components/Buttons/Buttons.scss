@@ -34,18 +34,22 @@ $color-green: #27ae60;
     background-color: $color-primary;
     border: 1px solid $color-primary;
 
-    &--selected {
-      color: $color-green;
-      background-color: $color-white;
-      border-color: $color-elements;
-    }
-
-    &:hover,
-    &:focus {
+    &:hover {
       color: $color-primary;
       border: 1px solid $color-primary;
       background-color: $color-hover-bg;
       box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--selected {
+      color: $color-green;
+      background-color: $color-white;
+      border-color: $color-elements;
+
+      &:hover {
+      border-color:#eb5757;
+      color: #eb5757;
+      }
     }
   }
 

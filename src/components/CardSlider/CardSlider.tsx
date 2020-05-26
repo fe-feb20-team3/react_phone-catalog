@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import cn from 'classnames';
 import { GoodItem } from '../GoodsList';
 import './CardSlider.scss';
@@ -23,12 +23,6 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
     setLeft(left + newLeftPosition);
     setPosition(position + path);
   };
-
-  useEffect(() => {
-    if (myRef.current) {
-      console.log(myRef.current.offsetWidth);
-    }
-  }, [myRef]);
 
   return (
     <div

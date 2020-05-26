@@ -1,0 +1,333 @@
+$color-icons: #b4bdc4;
+$color-elements: #e2e6e9;
+$color-primary: #313237;
+$color-secondary: #89939a;
+
+.Cart {
+  margin: 5rem 0;
+  transition: all 0.3s;
+  &__Title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__List {
+    list-style-type: none;
+  }
+
+  &__Empty {
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__EmptyImage {
+    margin-top: 2rem;
+    width: 500px;
+    position: relative;
+    right: 1rem;
+    opacity: 0.3;
+  }
+
+  &__ButtonContainer {
+    width: 200px;
+    height: 40px;
+    margin: 3rem auto 0;
+  }
+
+  &__GoShop {
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    display: block;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.4s;
+    font-weight: 500;
+    box-sizing: border-box;
+    background-color: $color-primary;
+
+    &:hover {
+      border: 1px solid $color-primary;
+      color: $color-primary;
+      background-color: #fff;
+      font-weight: 500;
+    }
+  }
+
+  &__Item {
+    width: 47rem;
+    height: 8rem;
+    box-sizing: border-box;
+    border: 1px solid $color-elements;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    padding: 0 2.5rem 0 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.4s;
+    position: absolute;
+    &:hover,
+    &:focus {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+
+    & .Cart__Image {
+      transform: scale(1.2);
+    }
+  }
+  }
+
+  &__Info {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__Label {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__InfoContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__Remove {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+    width: 10px;
+    height: 2px;
+    position: relative;
+    top: 50%;
+    transform-origin: center;
+    transform: translate(0, -50%) rotate(-45deg);
+    display: flex;
+    background-color: $color-icons;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      outline: 0;
+      width: 10px;
+      height: 2px;
+      background-color: inherit;
+      left: 0;
+      top: 0;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__Label:hover > .Cart__Remove {
+    background-color: $color-primary;
+  }
+
+  &__Image {
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s;
+
+    &-Container {
+      padding: 7px;
+      height: 5rem;
+      width: 5rem;
+      box-sizing: border-box;
+      margin-left: 2rem;
+    }
+  }
+
+  &__Name {
+    margin: 0 0 0 2rem;
+    font-weight: 500;
+    font-size: 14px;
+    color: $color-primary;
+  }
+
+  &__CountAndPrice {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__Price {
+    font-weight: bold;
+    font-size: 22px;
+    color: $color-primary;
+  }
+
+  &__ControlPanel {
+    display: flex;
+    align-items: center;
+  }
+
+  &__ModelCount {
+    margin: 0 1rem;
+    color: #000;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  &__ChangeCount {
+    width: 2rem;
+    height: 2rem;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    border: 1px solid $color-icons;
+    background-color: #fff;
+    display: flex;
+    position: relative;
+    transition: all 0.3s;
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $color-primary;
+    }
+
+    &:disabled {
+      border: 1px solid $color-elements;
+      cursor: default;
+    }
+  }
+
+  &__CharMinus,
+  &__CharPlus {
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background-color: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__CharPlus::after {
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background-color: inherit;
+    content: "";
+    left: 0;
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  &__ChangeCount:disabled > .Cart__CharMinus {
+    background-color: $color-icons;
+  }
+
+  &__ChangeCount:disabled > .Cart__CharPlus {
+    background-color: $color-icons;
+  }
+
+  &__Checkout {
+    width: 23rem;
+    height: 206px;
+    border: 1px solid $color-elements;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    position: relative;
+    left: 2rem;
+  }
+
+  &__CheckoutContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__CheckoutPrice {
+    margin: 0;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: $color-primary;
+  }
+
+  &__CheckoutTotal {
+    text-align: center;
+    color: $color-secondary;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0.5rem 0 0;
+  }
+
+  &__CheckoutButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: $color-primary;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.4s;
+    font-weight: 500;
+    text-decoration: none;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 3rem;
+    &:hover {
+      border: 1px solid $color-primary;
+      color: $color-primary;
+      background-color: #fff;
+      font-weight: 500;
+      box-sizing: border-box;
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      background-color: $color-elements;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      top: -1.5rem;
+    }
+  }
+
+  &__OldPrice {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    text-decoration-line: line-through;
+    color: $color-secondary;
+    font-size: 14px;
+  }
+
+  &__OldPriceCard {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    font-size: 13px;
+    text-decoration-line: line-through;
+    color: $color-secondary;
+  }
+}

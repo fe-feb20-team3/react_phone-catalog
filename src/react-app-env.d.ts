@@ -87,3 +87,15 @@ interface FavoritesContextType {
   removeFavorite: (product: Good) => void;
   isFavorite: (product: Good) => boolean;
 }
+
+interface CartGood {
+  id: string;
+  count: number;
+}
+
+interface CardContextType {
+  cart: CartGood[];
+  selectGood: (id: string) => void;
+  changeGoodCount: (id: string, path: number) => void;
+  clearCart: () => void;
+}

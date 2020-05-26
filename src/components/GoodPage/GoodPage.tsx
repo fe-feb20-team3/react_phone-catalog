@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, {
+  useState, useEffect, useMemo, useContext,
+} from 'react';
 import { useParams, useRouteMatch, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import cn from 'classnames';
@@ -11,6 +13,7 @@ import { GoodTechInfo } from './GoodTechInfo';
 import { GoodSpecsInfo } from './GoodSpecsInfo';
 import { CardSlider } from '../CardSlider/CardSlider';
 import { LoadSpinner } from '../LoadSpinner';
+import { CartContext } from '../Cart';
 
 interface Props {
   goods: Good[];
@@ -28,6 +31,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
 
   const currentType = goods.find(phone => goodDetail && phone.id === goodDetail.id);
   const sliderItems = sliderFilter(goods, 'alsoLike', match.params.good);
+  const { cart } = useContext(CartContext);
 
   const loadGoodDetail = async (goodId: string) => {
     setIsLoading(true);
@@ -65,7 +69,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
 
   const price = useMemo(
     () => (goodInfo && goodInfo.discount > 0
-      ? goodInfo.price - (goodInfo.price / goodInfo.discount)
+      ? goodInfo.price - ((goodInfo.price / 100) * goodInfo.discount)
       : goodInfo && goodInfo.price),
     [goodInfo],
   );
@@ -144,7 +148,13 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
                   </div>
                   <div className="GoodPage__Buttons">
                     <div className="GoodPage__Buttons--main">
-                      <PrimaryButton text="Add To Cart" />
+                      <PrimaryButton
+                        text={cart.some(prod => prod.id === match.params.good)
+                          ? 'Remove from cart'
+                          : 'Add to cart'}
+                        selected={cart.some(prod => prod.id === match.params.good)}
+                        id={match.params.good}
+                      />
                     </div>
                     <div className="GoodPage__Buttons--favorites">
                       <Icon

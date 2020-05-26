@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import './GoodsSection.scss';
 import { GoodsList } from '../GoodsList';
 import { Pagination, SelectPerPage } from '../Pagination';
-import { NotAvailable } from '../NotAvailable'
+import { NotAvailable } from '../NotAvailable';
 import {
   sortBy,
   SECTION_LINK,
@@ -96,14 +96,14 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
                 <div className="GoodsSection__Select">
                   <div className="GoodsSection__SelectName">
                     Sort by
-              </div>
+                  </div>
                   <Select options={SORT_TYPES} />
                 </div>
 
                 <div className="GoodSection__Select">
                   <div className="GoodsSection__SelectName">
                     Items on page
-              </div>
+                  </div>
                   <SelectPerPage options={PER_PAGE_SETTINGS} />
                 </div>
               </>
