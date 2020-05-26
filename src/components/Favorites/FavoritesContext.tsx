@@ -42,7 +42,8 @@ export const FavoritesContextWrapper: React.FC = ({ children }) => {
       addFavorite,
       removeFavorite,
       isFavorite,
-    }}>
+    }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

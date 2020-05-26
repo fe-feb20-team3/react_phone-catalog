@@ -7,9 +7,11 @@ import { Nav } from '../Nav';
 import { Search } from '../Search';
 import { Icon } from '../Icon';
 import { SECTION_LINK } from '../../helpers';
+import { CartContext } from '../Cart';
 
 export const Header = () => {
   const { favorites } = useContext(FavoritesContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <header className="Header" id="top">
@@ -37,10 +39,11 @@ export const Header = () => {
       <Link to="/cart" className="Header__Button">
         <Icon
           name="shopping-bag"
+          tag={cart.length}
           border={false}
           inActive={false}
         />
       </Link>
     </header>
-  )
+  );
 };
