@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Banner.scss';
 import cn from 'classnames';
 
 import { Banners } from '../../helpers';
 
 export const BannerSlider: React.FC = () => {
+  const myWidth = useRef<HTMLDivElement>(null);
   const bannerImages = Banners.map((image, i) => ({
     ...image,
     position: i + 1,
@@ -12,7 +13,7 @@ export const BannerSlider: React.FC = () => {
 
   const [currentPosition, setcurrentPosition] = useState(1);
   const [left, setLeft] = useState(0);
-  const imageWidth = 1040;
+  const [imageWidth, setImageWidth] = useState(1040)
   const imageGap = 16;
 
   const handleSlide = (path: number) => {
@@ -50,9 +51,23 @@ export const BannerSlider: React.FC = () => {
     setcurrentPosition(position);
   };
 
+  useEffect(() => {
+    if (myWidth) {
+      setImageWidth((myWidth.current?.offsetWidth || 0) - 32 * 3)
+    }
+  }, [myWidth])
+
+  console.log(imageWidth);
+
   return (
-    <div className="Banner">
-      <div className="Banner__Slider">
+    <div
+      className="Banner"
+
+    >
+      <div
+        className="Banner__Slider"
+        ref={myWidth}
+      >
         <button
           type="button"
           className="Banner__Button"
@@ -76,6 +91,9 @@ export const BannerSlider: React.FC = () => {
                 <img
                   src={image.path}
                   alt={image.alt}
+                  style={{
+                    width: `${imageWidth}px`
+                  }}
                   className="Banner__Image--current"
                 />
               </li>
@@ -98,7 +116,7 @@ export const BannerSlider: React.FC = () => {
             className={cn({
               'Banner__Position--active': image.position === currentPosition,
             },
-            'Banner__Position')}
+              'Banner__Position')}
             onClick={() => chooseImages(image.position)}
           />
         ))}

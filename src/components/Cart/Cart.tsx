@@ -137,7 +137,7 @@ export const Cart: React.FC<Props> = ({ goods }) => {
                         ? good.price - ((good.discount / 100) * good.price)
                         : good.price}
                     </p>
-                    {good.discount && (
+                    {good.discount > 0 && (
                       <p className="Cart__OldPriceCard">
                         $
                         {good.price}

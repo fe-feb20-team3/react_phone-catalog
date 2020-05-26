@@ -19,6 +19,7 @@ $color-elements: #e2e6e9;
   &__Container {
     margin: 0 auto;
     overflow: hidden;
+    width: 100%;
   }
 
   &__Item {
@@ -82,5 +83,23 @@ $color-elements: #e2e6e9;
       justify-content: space-between;
       margin-bottom: 24px;
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .Card__Container {
+    width: 848px;
+  }
+}
+
+@media (max-width: 886px) {
+  .Card__Container {
+    width: 560px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Card__Container {
+    width: 272px;
   }
 }

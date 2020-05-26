@@ -46,8 +46,6 @@ $color-elements: #e2e6e9;
 
     &--current {
       margin-right: 1rem;
-      transform: translateX();
-      width: 1040px;
       height: 400px;
     }
   }
@@ -85,6 +83,16 @@ $color-elements: #e2e6e9;
       display: flex;
       margin: 0 auto;
       justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .Banner {
+
+    &__Slider {
+      width: 700px;
+
     }
   }
 }

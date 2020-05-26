@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import cn from 'classnames';
 import { GoodItem } from '../GoodsList';
 import './CardSlider.scss';
@@ -10,10 +10,10 @@ interface Props {
 
 export const CardSlider: React.FC<Props> = ({ goods, title }) => {
   const [left, setLeft] = useState(0);
-  const myRef = useRef<HTMLDivElement>(null);
+  const myWidth = useRef<HTMLDivElement>(null);
   const cardWidth = 272;
   const cardGap = 16;
-  const cardsOnOneMoment = 4;
+  const [cardsOnOneMoment, setCardsOnOneMoment] = useState(4)
   const cardsLength = goods.length;
   const [position, setPosition] = useState(cardsOnOneMoment);
 
@@ -24,13 +24,19 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
     setPosition(position + path);
   };
 
+  useEffect(() => {
+    console.log(myWidth.current?.offsetWidth);
+    setCardsOnOneMoment(Math.floor((myWidth.current?.offsetWidth || 0) / cardWidth))
+    setLeft(0)
+    setPosition(Math.floor((myWidth.current?.offsetWidth || 0) / cardWidth))
+  }, [myWidth]);
+
+  console.log(cardsOnOneMoment);
+
   return (
     <div
       className="Card__Container"
-      style={{
-        width: `${(cardWidth * cardsOnOneMoment) + (cardGap * (cardsOnOneMoment - 1))}px`,
-      }}
-      ref={myRef}
+      ref={myWidth}
     >
       <div className="Card__Title-site">
         <div>
