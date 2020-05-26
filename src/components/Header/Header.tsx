@@ -8,6 +8,7 @@ import { Search } from '../Search';
 import { Icon } from '../Icon';
 import { SECTION_LINK } from '../../helpers';
 import { CartContext } from '../Cart';
+import { NavSliding } from '../NavSliding';
 
 export const Header = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -18,15 +19,17 @@ export const Header = () => {
       <Link to="/" className="Header__Logo">
         <img src="./img/logo.svg" alt="Logo" />
       </Link>
-      <NavLink
-        to="/"
-        exact
-        className="Nav__Link"
-        activeClassName="Nav__Link--active"
-      >
-        Home
-      </NavLink>
-      <Nav links={SECTION_LINK} />
+      <div className="Header__HomeLink">
+        <NavLink
+          to="/"
+          exact
+          className="Nav__Link"
+          activeClassName="Nav__Link--active"
+        >
+          Home
+        </NavLink>
+      </div>
+      <Nav links={SECTION_LINK} className="Header__Nav" />
       <Route path="/:section" exact component={Search} />
       <Link to="/favorites" className="Header__Button">
         <Icon
@@ -44,6 +47,7 @@ export const Header = () => {
           inActive={false}
         />
       </Link>
+      <NavSliding />
     </header>
   );
 };
