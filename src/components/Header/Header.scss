@@ -37,6 +37,8 @@ $screen-max: 1136px;
   }
 
   &__HomeLink {
+    height: 100%;
+
     @media screen and (max-width: $screen-medium) {
       display: none;
     }
