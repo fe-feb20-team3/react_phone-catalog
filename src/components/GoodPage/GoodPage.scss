@@ -1,6 +1,9 @@
 $color-primary: #313237;
 $color-secondary: #89939a;
 $color-elements: #e2e6e9;
+$screen-medium: 1024px;
+$screen-extra-small: 420px;
+$screen-custom-small: 525px;
 
 .GoodPage {
   &__SubHeading {
@@ -27,6 +30,10 @@ $color-elements: #e2e6e9;
 
   &__Column {
     position: relative;
+
+    @media screen and (max-width: $screen-custom-small) {
+      margin: 0 auto;
+    }
   }
 
   &__Id {
@@ -36,6 +43,10 @@ $color-elements: #e2e6e9;
     color: $color-secondary;
     font-weight: 600;
     font-size: 12px;
+
+    @media screen and (max-width: $screen-custom-small) {
+      left: 0;
+    }
   }
 
   &__Content {
@@ -43,15 +54,27 @@ $color-elements: #e2e6e9;
     grid-template-columns: repeat(2, 1fr);
     gap: 5rem 4rem;
     margin-top: 3rem;
+
+    @media screen and (max-width: $screen-medium) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__Images {
     display: flex;
+
+    @media screen and (max-width: $screen-custom-small) {
+      flex-direction: column;
+    }
   }
 
   &__ImageList {
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: $screen-custom-small) {
+      margin: 0 auto;
+    }
   }
 
   &__ImageItem {
@@ -84,6 +107,10 @@ $color-elements: #e2e6e9;
     font-size: 14px;
     line-height: 21px;
     color: $color-secondary;
+
+    @media screen and (max-width: $screen-custom-small) {
+      display: none;
+    }
   }
 
   &__NarrowBlock {

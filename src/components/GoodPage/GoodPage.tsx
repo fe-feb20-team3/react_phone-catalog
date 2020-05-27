@@ -31,7 +31,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const currentType = goods.find(phone => goodDetail && phone.id === goodDetail.id);
-  const sliderItems = sliderFilter(goods, 'alsoLike', match.params.good);
+  const sliderItems = sliderFilter(goods, 'hotPrice', '');
   const { cart } = useContext(CartContext);
   const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
@@ -119,7 +119,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
                         className={cn({
                           'GoodPage__Image--current': i === activeImageIndex,
                         },
-                        'GoodPage__ImageItem')}
+                          'GoodPage__ImageItem')}
                         key={image}
                       >
                         <a href="./#" onClick={e => handleImages(e, i)}>
@@ -207,9 +207,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
           </article>
         )}
       </section>
-      <div className="GoodPage__Slider">
-        <CardSlider goods={sliderItems} title="You may also like" />
-      </div>
+      <CardSlider goods={sliderItems} title="You may also like" />
     </>
   );
 };
