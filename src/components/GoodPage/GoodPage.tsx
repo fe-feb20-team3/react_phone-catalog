@@ -119,7 +119,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
                         className={cn({
                           'GoodPage__Image--current': i === activeImageIndex,
                         },
-                          'GoodPage__ImageItem')}
+                        'GoodPage__ImageItem')}
                         key={image}
                       >
                         <a href="./#" onClick={e => handleImages(e, i)}>

@@ -52,8 +52,9 @@ export const Search = () => {
 
   return (
     <form action="./" className="Search" onSubmit={e => e.preventDefault()}>
-      <label htmlFor="search" className="Search__Label">
+      <label htmlFor="search-field" className="Search__Label">
         <input
+          id="search-field"
           type="text"
           className="Search__Input"
           value={visibleQuery}
@@ -62,6 +63,7 @@ export const Search = () => {
           onChange={handleQueryUpdate}
         />
         <button
+          type="button"
           className={cn({
             Search__Button: true,
             'Search__Button--clear': visibleQuery.length > 0,
