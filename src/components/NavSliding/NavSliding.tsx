@@ -1,19 +1,26 @@
-import React, { useState, useContext } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
 import './NavSliding.scss';
 import { Icon } from '../Icon';
+import { CartContext } from '../Cart';
 import { FavoritesContext } from '../Favorites';
 import { SECTION_LINK, FOOTER_LINKS } from '../../helpers';
 
 export const NavSliding = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const { favorites } = useContext(FavoritesContext);
+  const { cart } = useContext(CartContext);
 
   const handleNavSliding = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   return (
     <nav className="NavSliding">
@@ -28,12 +35,13 @@ export const NavSliding = () => {
       <section className={cn('NavSliding__Block', { show: isOpen })}>
         <div className="NavSliding__Illustration" />
         <div className="NavSliding__Content">
-          <ul className="NavSliding__List--secondary">
+          <ul className="NavSliding__List--secondary NavSliding__List--icons">
             <li className="NavSliding__Item--secondary">
               <Link to="/favorites" className="NavSliding__Icon">
                 <Icon
                   name="favorites"
                   tag={favorites.length}
+                  size={3}
                   border={false}
                   inActive={false}
                 />
@@ -43,6 +51,8 @@ export const NavSliding = () => {
               <Link to="/cart" className="NavSliding__Icon">
                 <Icon
                   name="shopping-bag"
+                  tag={cart.length}
+                  size={3}
                   border={false}
                   inActive={false}
                 />
@@ -51,38 +61,33 @@ export const NavSliding = () => {
           </ul>
           <ul className="NavSliding__List">
             <li className="NavSliding__Item">
-              <NavLink
+              <Link
                 to="/"
-                exact
                 className="NavSliding__Link NavSliding__Link--primary"
-                activeClassName="Nav__Link--active"
               >
                 Home
-              </NavLink>
+              </Link>
             </li>
-            {SECTION_LINK.map(({ name, url, exact }) => (
+            {SECTION_LINK.map(({ name, url }) => (
               <li className="NavSliding__Item" key={name}>
-                <NavLink
+                <Link
                   to={url}
-                  exact={exact}
                   className="NavSliding__Link NavSliding__Link--primary"
-                  activeClassName="NavSliding__Link--active"
                 >
                   {name}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>
           <ul className="NavSliding__List--secondary">
             {FOOTER_LINKS.map(({ name, url }) => (
               <li className="NavSliding__Item--secondary" key={name}>
-                <NavLink
+                <Link
                   to={url}
                   className="NavSliding__Link NavSliding__Link--secondary"
-                  activeClassName="NavSliding__Link--active"
                 >
                   {name}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>

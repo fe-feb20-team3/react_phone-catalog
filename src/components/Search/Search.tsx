@@ -14,11 +14,11 @@ export const Search = () => {
   const query = searchParams.get('query') || '';
   const [visibleQuery, setVisibleQuery] = useState(query);
 
-  const myRef = useRef<HTMLInputElement>(null);
+  const searchInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (query === '') {
-      myRef.current!.focus();
+      searchInput.current!.focus();
     }
   }, [query]);
 
@@ -58,7 +58,7 @@ export const Search = () => {
           className="Search__Input"
           value={visibleQuery}
           placeholder="Search in phones..."
-          ref={myRef}
+          ref={searchInput}
           onChange={handleQueryUpdate}
         />
         <button
