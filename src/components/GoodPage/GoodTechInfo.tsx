@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { techInfo } from '../../helpers/techInfo';
+import { ITEM_TECH_INFO } from '../../helpers/config';
 interface Props {
   goodInfo: Good | undefined;
   goodDetail: GoodDetail;
@@ -7,37 +8,16 @@ interface Props {
 
 export const GoodTechInfo: React.FC<Props> = ({ goodInfo, goodDetail }) => (
   <ul className="GoodPage__InfoList">
-    <li className="GoodPage__InfoItem">
-      <p className="GoodPage__InfoTitle">
-        Screen
-      </p>
-      <p className="GoodPage__InfoFeature">
-        {goodInfo && (goodInfo.screen || 'No info')}
-      </p>
-    </li>
-    <li className="GoodPage__InfoItem">
-      <p className="GoodPage__InfoTitle">
-        Resolution
-      </p>
-      <p className="GoodPage__InfoFeature">
-        {goodDetail && (goodDetail.display.screenResolution || 'No info')}
-      </p>
-    </li>
-    <li className="GoodPage__InfoItem">
-      <p className="GoodPage__InfoTitle">
-        Processor
-      </p>
-      <p className="GoodPage__InfoFeature">
-        {goodDetail && (goodDetail.hardware.cpu || 'No info')}
-      </p>
-    </li>
-    <li className="GoodPage__InfoItem">
-      <p className="GoodPage__InfoTitle">
-        RAM
-      </p>
-      <p className="GoodPage__InfoFeature">
-        {goodInfo && (goodInfo.ram || 'No info')}
-      </p>
-    </li>
+    {ITEM_TECH_INFO.map(item => (
+      <li className="GoodPage__InfoItem">
+        <p className="GoodPage__InfoTitle">
+          {item.name}
+        </p>
+        <p className="GoodPage__InfoFeature">
+          {goodInfo && techInfo(goodInfo, goodDetail, item.name, item.order)}
+        </p>
+      </li>
+    ))}
   </ul>
 );
+

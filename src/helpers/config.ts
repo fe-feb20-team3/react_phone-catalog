@@ -63,3 +63,58 @@ export const SLIDER_FILTER_TYPE = {
   alsoLike: 'alsoLike',
   newModels: 'newModels',
 };
+
+export const ITEM_TECH_INFO: ItemTechType[] = [
+  {
+    name: 'Screen',
+    order: 'info',
+  },
+  {
+    name: 'Resolution',
+    order: 'detail',
+  },
+  {
+    name: 'Processor',
+    order: 'detail',
+  },
+  {
+    name: 'RAM',
+    order: 'info',
+  },
+];
+
+export const ITEM_TECH_SPECS: ItemTechType[] = [
+  {
+    name: 'Screen',
+    order: 'info',
+  },
+  {
+    name: 'Resolution',
+    order: 'detail',
+  },
+  {
+    name: 'Processor',
+    order: 'detail',
+  },
+  {
+    name: 'RAM',
+    order: 'info',
+  },
+  {
+    name: 'Built in memory',
+    order: 'info',
+  },
+  {
+    name: 'Camera',
+    order: 'detail',
+  },
+  {
+    name: 'Zoom',
+    order: 'detail',
+  },
+  {
+    name: 'Cell',
+    order: 'detail',
+  },
+];
+
