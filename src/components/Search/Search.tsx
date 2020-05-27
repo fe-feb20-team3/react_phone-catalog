@@ -1,15 +1,17 @@
 import React, {
   useState, useEffect, useRef, useCallback,
 } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import cn from 'classnames';
 
 import './Search.scss';
-import { debounce } from '../../helpers/debounce';
+import { debounce, SECTION_LINK } from '../../helpers';
 
 export const Search = () => {
   const history = useHistory();
   const location = useLocation();
+  const { section } = useParams();
+  const isSection = SECTION_LINK.some(item => item.url === `/${section}`);
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('query') || '';
   const [visibleQuery, setVisibleQuery] = useState(query);
@@ -17,8 +19,8 @@ export const Search = () => {
   const searchInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (query === '') {
-      searchInput.current!.focus();
+    if (query === '' && searchInput.current) {
+      searchInput.current.focus();
     }
   }, [query]);
 
@@ -51,26 +53,30 @@ export const Search = () => {
   };
 
   return (
-    <form action="./" className="Search" onSubmit={e => e.preventDefault()}>
-      <label htmlFor="search-field" className="Search__Label">
-        <input
-          id="search-field"
-          type="text"
-          className="Search__Input"
-          value={visibleQuery}
-          placeholder="Search in phones..."
-          ref={searchInput}
-          onChange={handleQueryUpdate}
-        />
-        <button
-          type="button"
-          className={cn({
-            Search__Button: true,
-            'Search__Button--clear': visibleQuery.length > 0,
-          })}
-          onClick={clearInput}
-        />
-      </label>
-    </form>
+    <div className="Search">
+      {isSection && (
+        <form action="./" className="Search__Form" onSubmit={e => e.preventDefault()}>
+          <label htmlFor="search-field" className="Search__Label">
+            <input
+              id="search-field"
+              type="text"
+              className="Search__Input"
+              value={visibleQuery}
+              placeholder="Search in phones..."
+              ref={searchInput}
+              onChange={handleQueryUpdate}
+            />
+            <button
+              type="button"
+              className={cn({
+                Search__Button: true,
+                'Search__Button--clear': visibleQuery.length > 0,
+              })}
+              onClick={clearInput}
+            />
+          </label>
+        </form>
+      )}
+    </div>
   );
 };

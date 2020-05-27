@@ -1,0 +1,15 @@
+.Breadcrumbs {
+  margin-top: 1.5rem;
+
+  &__List {
+    display: flex;
+  }
+
+  &__Item {
+    list-style: none;
+  }
+
+  &__Link {
+    height: 1rem;
+  }
+}

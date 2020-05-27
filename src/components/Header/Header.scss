@@ -36,7 +36,7 @@ $screen-max: 1136px;
     }
 
     @media screen and (max-width: $screen-extra-small) {
-      margin-right: 0;
+      margin-right: 1rem;
     }
   }
 
@@ -46,6 +46,13 @@ $screen-max: 1136px;
     @media screen and (max-width: $screen-medium) {
       display: none;
     }
+  }
+
+  &__Search {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-left: 1px solid #e2e6e9;
   }
 
   &__Nav {
@@ -65,5 +72,9 @@ $screen-max: 1136px;
     border-left: 1px solid $color-elements;
     border-bottom: 1px solid $color-elements;
     overflow: hidden;
+
+    @media screen and (max-width: $screen-extra-small) {
+      display: none;
+    }
   }
 }

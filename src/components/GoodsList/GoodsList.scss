@@ -50,7 +50,7 @@ $screen-max: 1136px;
     object-fit: contain;
     object-position: center;
     transform-origin: center;
-    transition: transform 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    transition: transform 0.3s;
   }
 
   &__Heading {

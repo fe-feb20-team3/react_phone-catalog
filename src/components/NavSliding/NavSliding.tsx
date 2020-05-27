@@ -33,7 +33,7 @@ export const NavSliding = () => {
         <span className="NavSliding__ButtonLine" />
       </button>
       <section className={cn('NavSliding__Block', { show: isOpen })}>
-        <div className="NavSliding__Illustration" />
+        <div className="NavSliding__Illustration" onClick={() => setIsOpen(false)} />
         <div className="NavSliding__Content">
           <ul className="NavSliding__List--secondary NavSliding__List--icons">
             <li className="NavSliding__Item--secondary">
