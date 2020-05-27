@@ -48,6 +48,11 @@ $screen-max: 1136px;
     }
   }
 
+  &__Search {
+    border-left: 1px solid $color-elements;
+    height: 100%;
+  }
+
   &__Nav {
     @media screen and (max-width: $screen-medium) {
       display: none;
