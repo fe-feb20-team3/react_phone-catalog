@@ -12,9 +12,14 @@ export const Cart: React.FC<Props> = ({ goods }) => {
     cart, changeGoodCount, selectGood, clearCart,
   } = useContext(CartContext);
   const [goodForBuy, setGoodForBuy] = useState<Good[]>(goods
-    .filter(good => cart
-      .some(prod => prod.id === good.id)));
+    .filter(good => cart.some(prod => prod.id === good.id))
+  );
+
   const [checkoutHeight] = useState(206);
+  const cartGoodWidth = 128;
+  const cardGap = 16;
+  const checkoutContainer = 90;
+  const maxForOrder = 10;
 
   useEffect(() => {
     if (cart.length) {
@@ -67,7 +72,7 @@ export const Cart: React.FC<Props> = ({ goods }) => {
         <div
           className="Cart container"
           style={{
-            height: `${90 + (cart.length * 128) + (16 * (cart.length - 1)) + checkoutHeight + 16}px`,
+            height: `${checkoutContainer + (cart.length * cartGoodWidth) + (cardGap * (cart.length - 1)) + checkoutHeight + cardGap}px`,
           }}
         >
           <h1 className="Cart__Title">
@@ -77,7 +82,7 @@ export const Cart: React.FC<Props> = ({ goods }) => {
             <ul
               className="Cart__List"
               style={{
-                height: `${cart.length * 128 + 16 * cart.length}px`
+                height: `${cart.length * cartGoodWidth + cardGap * cart.length}px`
               }}
             >
               {goodForBuy.map((good, i) => (
@@ -85,7 +90,7 @@ export const Cart: React.FC<Props> = ({ goods }) => {
                   className="Cart__Item"
                   key={good.id}
                   style={{
-                    transform: `translateY(${(i * 128) + (16 * i - 1)}px)`,
+                    transform: `translateY(${(i * cartGoodWidth) + (cardGap * i - 1)}px)`,
                   }}
                 >
                   <div className="Cart__Info">
@@ -130,7 +135,7 @@ export const Cart: React.FC<Props> = ({ goods }) => {
                         className="Cart__ChangeCount"
                         disabled={
                           Boolean(cart
-                            .find(prod => prod.id === good.id && prod.count === 10)?.count)
+                            .find(prod => prod.id === good.id && prod.count === maxForOrder)?.count)
                         }
                         onClick={() => changeGoodCount(good.id, 1)}
                       >

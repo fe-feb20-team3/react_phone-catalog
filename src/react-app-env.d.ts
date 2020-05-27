@@ -99,3 +99,8 @@ interface CardContextType {
   changeGoodCount: (id: string, path: number) => void;
   clearCart: () => void;
 }
+
+interface ItemTechType {
+  name: string;
+  order: string;
+}
