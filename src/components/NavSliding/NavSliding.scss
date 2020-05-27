@@ -224,6 +224,10 @@ $border-width: 1px;
     }
 
     &--icons {
+      transition: transform 0.3s;
+    }
+
+    .show &--icons {
       transform: scale(3);
 
       @media screen and (max-width: $screen-extra-small) {
