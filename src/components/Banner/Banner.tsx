@@ -5,7 +5,6 @@ import cn from 'classnames';
 import { Banners } from '../../helpers';
 
 export const BannerSlider: React.FC = () => {
-  const myWidth = useRef<HTMLDivElement>(null);
   const bannerImages = Banners.map((image, i) => ({
     ...image,
     position: i + 1,
@@ -15,6 +14,7 @@ export const BannerSlider: React.FC = () => {
   const [left, setLeft] = useState(0);
   const [imageWidth, setImageWidth] = useState(1040)
   const imageGap = 16;
+  const myWidth = useRef<HTMLDivElement>(null);
 
   const handleSlide = (path: number) => {
     const newLeftPosition = (imageWidth + imageGap) * -path;
@@ -52,21 +52,19 @@ export const BannerSlider: React.FC = () => {
   };
 
   useEffect(() => {
-    if (myWidth) {
-      setImageWidth((myWidth.current?.offsetWidth || 0) - 32 * 3)
-    }
+    const width = (myWidth.current?.offsetWidth || 0);
+    const buttonWidth = 32;
+    const gapWidth = 16;
+    setImageWidth(width - (buttonWidth * 2) - (gapWidth * 2))
   }, [myWidth])
-
-  console.log(imageWidth);
 
   return (
     <div
       className="Banner"
-
+      ref={myWidth}
     >
       <div
         className="Banner__Slider"
-        ref={myWidth}
       >
         <button
           type="button"

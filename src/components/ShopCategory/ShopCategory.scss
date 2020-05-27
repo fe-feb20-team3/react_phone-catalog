@@ -1,23 +1,32 @@
 $color-primary: #313237;
 $color-secondary: #89939a;
+$screen-small: 768px;
 
 .Category {
   margin: 0 auto 5rem;
-  width: 1136px;
+  width: 100%;
 
   &__List {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
     list-style-type: none;
+
+    @media screen and (max-width: $screen-small) {
+      grid-template-columns: 1fr;
+      margin: 0 auto;
+    }
   }
 
   &__Link {
     text-decoration: none;
+    display: block;
   }
 
   &__Image {
     width: 100%;
-    height: 100%;
+    object-fit: cover;
+    object-position: center;
     transition: all 0.8s;
 
     &:hover {
@@ -27,8 +36,6 @@ $color-secondary: #89939a;
 
   &__ImageContainer {
     overflow: hidden;
-    width: 23rem;
-    height: 23rem;
   }
 
   &__Title {

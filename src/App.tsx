@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import './App.scss';
@@ -18,6 +18,7 @@ export const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const myWidth = useRef<HTMLDivElement>(null);
 
   const loadGoods = async () => {
     setIsLoading(true);
@@ -45,7 +46,10 @@ export const App = () => {
       <CartContextWrapper>
         <FavoritesContextWrapper>
           <Header />
-          <div className="container">
+          <div
+            className="container"
+            ref={myWidth}
+          >
             {errorMessage && <div>{errorMessage}</div>}
             {isLoading && isLoaded && ''}
             <Switch>

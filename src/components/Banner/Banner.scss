@@ -1,14 +1,21 @@
 $color-icons: #b4bdc4;
 $color-primary: #313237;
 $color-elements: #e2e6e9;
+$screen-extra-small: 420px;
 
 .Banner {
-  margin: 2.5rem auto 6.5rem;
-  &__Slider{
+  margin: 2.5rem auto 5rem;
+  width: 100%;
+
+  @media screen and (max-width: $screen-extra-small) {
+    display: none;
+  }
+
+  &__Slider {
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    width: 1136px;
+    display: grid;
+    grid-template-columns: 2rem 1fr 2rem;
+    gap: 1rem;
   }
 
   &__Button {
@@ -46,7 +53,10 @@ $color-elements: #e2e6e9;
 
     &--current {
       margin-right: 1rem;
-      height: 400px;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 
@@ -87,12 +97,12 @@ $color-elements: #e2e6e9;
   }
 }
 
-@media (max-width: 1200px) {
-  .Banner {
+// @media (max-width: 1200px) {
+//   .Banner {
 
-    &__Slider {
-      width: 700px;
+//     &__Slider {
+//       width: 700px;
 
-    }
-  }
-}
+//     }
+//   }
+// }

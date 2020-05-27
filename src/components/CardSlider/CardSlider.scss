@@ -1,6 +1,7 @@
 $color-icons: #b4bdc4;
 $color-primary: #313237;
 $color-elements: #e2e6e9;
+$screen-extra-small: 420px;
 
 .Card {
   display: grid;
@@ -20,11 +21,19 @@ $color-elements: #e2e6e9;
     margin: 0 auto;
     overflow: hidden;
     width: 100%;
+
+    @media screen and (max-width: $screen-extra-small) {
+      margin-top: 5rem;
+    }
   }
 
   &__Item {
     width: 272px;
     list-style-type: none;
+  }
+
+  &__Buttons {
+    white-space: nowrap;
   }
 
   &__Button {
@@ -86,20 +95,20 @@ $color-elements: #e2e6e9;
   }
 }
 
-@media (max-width: 1200px) {
-  .Card__Container {
-    width: 848px;
-  }
-}
+// @media (max-width: 1200px) {
+//   .Card__Container {
+//     width: 848px;
+//   }
+// }
 
-@media (max-width: 886px) {
-  .Card__Container {
-    width: 560px;
-  }
-}
+// @media (max-width: 886px) {
+//   .Card__Container {
+//     width: 560px;
+//   }
+// }
 
-@media (max-width: 600px) {
-  .Card__Container {
-    width: 272px;
-  }
-}
+// @media (max-width: 600px) {
+//   .Card__Container {
+//     width: 272px;
+//   }
+// }
