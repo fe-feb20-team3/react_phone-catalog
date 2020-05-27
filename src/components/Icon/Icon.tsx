@@ -18,9 +18,8 @@ export const Icon: React.FC<Props> = ({
   border,
   inActive,
 }) => (
-  <button
-    type="button"
-    className={cn(`Icon Icon__Size${size}`, {
+  <div
+    className={cn(`Icon Icon--size${size}`, {
       Icon__Border: border,
     })}
   >
@@ -28,10 +27,17 @@ export const Icon: React.FC<Props> = ({
       cn(
         'Icon__Image',
         `Icon__Image--${name}`,
-        { 'Icon__Image--inactive': inActive },
+        `Icon__Image--size${size}`,
+        {
+          'Icon__Image--inactive': inActive,
+        },
       )
     }
     />
-    {Number(tag) > 0 && <div className="Icon__tag">{tag}</div>}
-  </button>
+    {Number(tag) > 0 && (
+      <div className={`Icon__Tag Icon__Tag--size${size}`}>
+        {tag}
+      </div>
+    )}
+  </div>
 );

@@ -24,6 +24,10 @@ $screen-max: 1136px;
     grid-template-columns: max-content 1fr repeat(3, max-content);
   }
 
+  @media screen and (max-width: $screen-extra-small) {
+    grid-template-columns: max-content auto repeat(3, max-content);
+  }
+
   &__Logo {
     margin: 0 4rem 0 1rem;
 

@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { Link, NavLink, Route } from 'react-router-dom';
 
 import './Header.scss';
-import { FavoritesContext } from '../Favorites';
 import { Nav } from '../Nav';
 import { Search } from '../Search';
 import { Icon } from '../Icon';
 import { SECTION_LINK } from '../../helpers';
 import { CartContext } from '../Cart';
+import { FavoritesContext } from '../Favorites';
 import { NavSliding } from '../NavSliding';
 
 export const Header = () => {
