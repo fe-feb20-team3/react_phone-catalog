@@ -30,7 +30,9 @@ export const Header = () => {
         </NavLink>
       </div>
       <Nav links={SECTION_LINK} className="Header__Nav" />
-      <Route path="/:section" exact component={Search} />
+      <div className="Header__Search">
+        <Route path="/:section" exact component={Search} />
+      </div>
       <Link to="/favorites" className="Header__Button">
         <Icon
           name="favorites"
