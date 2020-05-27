@@ -13,7 +13,7 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
   const myWidth = useRef<HTMLDivElement>(null);
   const cardGap = 16;
   const minCardWidth = 272;
-  const [cardsOnOneMoment, setCardsOnOneMoment] = useState(4)
+  const [cardsOnOneMoment, setCardsOnOneMoment] = useState(4);
   const [cardWidth, setCardWidth] = useState(minCardWidth);
   const cardsLength = goods.length;
   const [position, setPosition] = useState(cardsOnOneMoment);
@@ -30,6 +30,7 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
     const visibleCardsQTY = Math.floor(containerWidth / cardWidth);
     const gapsWidth = (visibleCardsQTY - 1) * cardGap;
     const visibleCardWidth = (containerWidth - gapsWidth) / visibleCardsQTY;
+
     setCardsOnOneMoment(visibleCardsQTY);
     setPosition(visibleCardsQTY);
     setLeft(0);

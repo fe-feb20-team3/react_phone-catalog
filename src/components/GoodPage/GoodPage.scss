@@ -33,6 +33,7 @@ $screen-custom-small: 525px;
 
     @media screen and (max-width: $screen-custom-small) {
       margin: 0 auto;
+      width: 100%;
     }
   }
 
@@ -64,7 +65,7 @@ $screen-custom-small: 525px;
     display: flex;
 
     @media screen and (max-width: $screen-custom-small) {
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
   }
 
@@ -74,6 +75,8 @@ $screen-custom-small: 525px;
 
     @media screen and (max-width: $screen-custom-small) {
       margin: 0 auto;
+      display: flex;
+      flex-direction: row;
     }
   }
 
@@ -85,6 +88,12 @@ $screen-custom-small: 525px;
     border: 1px solid #c4c4c4;
     box-sizing: border-box;
     transition: all 0.3s;
+
+    @media screen and (max-width: $screen-custom-small) {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.5rem;
+    }
   }
 
   &__Image {
@@ -100,6 +109,10 @@ $screen-custom-small: 525px;
     object-fit: contain;
     object-position: center;
     margin: auto;
+
+    @media screen and (max-width: $screen-custom-small) {
+      width: 280px;
+    }
   }
 
   &__Description {
@@ -115,6 +128,11 @@ $screen-custom-small: 525px;
 
   &__NarrowBlock {
     max-width: 20rem;
+
+    @media screen and (max-width: $screen-custom-small) {
+      width: 100%;
+      max-width: none;
+    }
   }
 
   &__Price {
@@ -163,6 +181,11 @@ $screen-custom-small: 525px;
 
   &__InfoList {
     max-width: 20rem;
+
+    @media screen and (max-width: $screen-custom-small) {
+      width: 100%;
+      max-width: none;
+    }
   }
 
   &__InfoItem {

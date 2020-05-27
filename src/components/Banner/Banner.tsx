@@ -12,7 +12,7 @@ export const BannerSlider: React.FC = () => {
 
   const [currentPosition, setcurrentPosition] = useState(1);
   const [left, setLeft] = useState(0);
-  const [imageWidth, setImageWidth] = useState(1040)
+  const [imageWidth, setImageWidth] = useState(1040);
   const imageGap = 16;
   const myWidth = useRef<HTMLDivElement>(null);
 
@@ -55,8 +55,9 @@ export const BannerSlider: React.FC = () => {
     const width = (myWidth.current?.offsetWidth || 0);
     const buttonWidth = 32;
     const gapWidth = 16;
-    setImageWidth(width - (buttonWidth * 2) - (gapWidth * 2))
-  }, [myWidth])
+
+    setImageWidth(width - (buttonWidth * 2) - (gapWidth * 2));
+  }, [myWidth]);
 
   return (
     <div
@@ -90,7 +91,7 @@ export const BannerSlider: React.FC = () => {
                   src={image.path}
                   alt={image.alt}
                   style={{
-                    width: `${imageWidth}px`
+                    width: `${imageWidth}px`,
                   }}
                   className="Banner__Image--current"
                 />
@@ -114,7 +115,7 @@ export const BannerSlider: React.FC = () => {
             className={cn({
               'Banner__Position--active': image.position === currentPosition,
             },
-              'Banner__Position')}
+            'Banner__Position')}
             onClick={() => chooseImages(image.position)}
           />
         ))}

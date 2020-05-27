@@ -36,6 +36,7 @@ $screen-small: 768px;
 
   &__ImageContainer {
     overflow: hidden;
+    display: flex;
   }
 
   &__Title {

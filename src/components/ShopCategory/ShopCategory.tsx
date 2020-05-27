@@ -29,7 +29,6 @@ export const ShopCategory: React.FC<Props> = ({ goods }) => (
                   className="Category__Image"
                 />
               </div>
-
               <div className="Category__Info">
                 <h3 className="Category__InfoType Category__Paragraph">
                   {link.title}
