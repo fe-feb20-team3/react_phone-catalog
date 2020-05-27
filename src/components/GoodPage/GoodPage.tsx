@@ -58,7 +58,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
 
       setGoodInfo(goodInfo);
     }
-  }, [goods]);
+  }, [goods, match.params.good]);
 
   useEffect(() => {
     loadGoodDetail(good);

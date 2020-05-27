@@ -14,6 +14,7 @@ export const Cart: React.FC<Props> = ({ goods }) => {
   const [goodForBuy, setGoodForBuy] = useState<Good[]>(goods
     .filter(good => cart
       .some(prod => prod.id === good.id)));
+  const [checkoutHeight] = useState(206);
 
   useEffect(() => {
     if (cart.length) {
@@ -66,14 +67,19 @@ export const Cart: React.FC<Props> = ({ goods }) => {
         <div
           className="Cart container"
           style={{
-            height: `${90 + (cart.length * 128) + (16 * (cart.length - 1))}px`,
+            height: `${90 + (cart.length * 128) + (16 * (cart.length - 1)) + checkoutHeight + 16}px`,
           }}
         >
           <h1 className="Cart__Title">
             Cart
           </h1>
           <div className="Cart__InfoContainer">
-            <ul className="Cart__List">
+            <ul
+              className="Cart__List"
+              style={{
+                height: `${cart.length * 128 + 16 * cart.length}px`
+              }}
+            >
               {goodForBuy.map((good, i) => (
                 <li
                   className="Cart__Item"

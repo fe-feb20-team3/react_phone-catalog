@@ -35,7 +35,7 @@ export const CardSlider: React.FC<Props> = ({ goods, title }) => {
     setPosition(visibleCardsQTY);
     setLeft(0);
     setCardWidth(visibleCardWidth);
-  }, [myWidth.current?.offsetWidth]);
+  }, [myWidth, cardWidth]);
 
   return (
     <>
