@@ -21,15 +21,15 @@ export const Favorites: React.FC<Props> = ({ goods }) => {
     [favorites, goods],
   );
 
+  const [defaultPerPage] = PER_PAGE_SETTINGS;
   const currentPage = Number(searchParams.get('page'));
-  const perPageDefault = PER_PAGE_SETTINGS[0].name;
   const perPageParam = useMemo(() => searchParams.get('perPage'), [searchParams]);
-  let perPage = Number(perPageDefault);
+  let perPage = Number(defaultPerPage.name);
 
   if (PER_PAGE_SETTINGS.find(item => item.name === perPageParam)) {
-    perPage = Number(PER_PAGE_SETTINGS.find(item => item.name === perPageParam)?.name);
+    perPage = Number(defaultPerPage?.name);
   } else {
-    searchParams.set('perPage', perPageDefault);
+    searchParams.set('perPage', defaultPerPage.name);
     history.push({
       search: searchParams.toString(),
     });

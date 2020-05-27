@@ -12,6 +12,7 @@ import { HomePage } from './components/HomePage';
 import { Favorites } from './components/Favorites/Favorites';
 import { Cart, CartContextWrapper } from './components/Cart';
 import { Checkout } from './components/Checkout';
+import { Breadcrumbs } from './components/Breadcrumbs';
 
 export const App = () => {
   const [goods, setGoods] = useState<Good[]>([]);
@@ -52,6 +53,12 @@ export const App = () => {
           >
             {errorMessage && <div>{errorMessage}</div>}
             {isLoading && isLoaded && ''}
+            <Switch>
+              <Route path="/" exact />
+              <Route path="/:levelOne?/:levelTwo?">
+                <Breadcrumbs />
+              </Route>
+            </Switch>
             <Switch>
               <Route path="/" exact render={() => <HomePage goods={goods} />} />
               <Route path="/favorites" render={() => <Favorites goods={goods} />} />

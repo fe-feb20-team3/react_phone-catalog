@@ -4,11 +4,7 @@ $color-elements: #e2e6e9;
 $screen-extra-small: 420px;
 
 .Search {
-  height: 100%;
-
-  @media screen and (max-width: $screen-extra-small) {
-    border-left: 0;
-  }
+  width: 100%;
 
   &__Label {
     position: relative;

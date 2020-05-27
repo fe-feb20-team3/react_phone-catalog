@@ -25,14 +25,14 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
 
   const query = searchParams.get('query')?.toLowerCase() || '';
   const currentPage = Number(searchParams.get('page'));
-  const perPageDefault = PER_PAGE_SETTINGS[0].name;
+  const [defaultPerPage] = PER_PAGE_SETTINGS;
   const perPageParam = useMemo(() => searchParams.get('perPage'), [searchParams]);
-  let perPage = Number(perPageDefault);
+  let perPage = Number(defaultPerPage.name);
 
   if (PER_PAGE_SETTINGS.find(item => item.name === perPageParam)) {
     perPage = Number(PER_PAGE_SETTINGS.find(item => item.name === perPageParam)?.name);
   } else {
-    searchParams.set('perPage', perPageDefault);
+    searchParams.set('perPage', defaultPerPage.name);
     history.push({
       search: searchParams.toString(),
     });
@@ -72,8 +72,6 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
     (currentPage || 1) * perPage - perPage,
     (currentPage || 1) * perPage,
   );
-
-  console.log(sortedGoods.length);
 
   return (
     <>
