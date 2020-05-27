@@ -33,6 +33,7 @@ $screen-custom-small: 525px;
 
     @media screen and (max-width: $screen-custom-small) {
       margin: 0 auto;
+      width: 280px;
     }
   }
 
@@ -100,6 +101,10 @@ $screen-custom-small: 525px;
     object-fit: contain;
     object-position: center;
     margin: auto;
+
+    @media screen and (max-width: $screen-custom-small) {
+      width: 280px;
+    }
   }
 
   &__Description {

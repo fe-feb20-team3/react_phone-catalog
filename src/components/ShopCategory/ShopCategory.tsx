@@ -22,14 +22,11 @@ export const ShopCategory: React.FC<Props> = ({ goods }) => (
             <Link to={link.url} className="Category__Link">
               <div
                 className="Category__ImageContainer"
-              >
-                <img
+              ><img
                   src={link.imgUrl}
                   alt={link.title}
                   className="Category__Image"
-                />
-              </div>
-
+                /></div>
               <div className="Category__Info">
                 <h3 className="Category__InfoType Category__Paragraph">
                   {link.title}
