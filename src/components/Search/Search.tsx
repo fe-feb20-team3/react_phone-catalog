@@ -5,13 +5,13 @@ import { useHistory, useLocation, useParams } from 'react-router-dom';
 import cn from 'classnames';
 
 import './Search.scss';
-import { debounce, SECTION_LINK } from '../../helpers';
+import { debounce, SECTION_LINKS } from '../../helpers';
 
 export const Search = () => {
   const history = useHistory();
   const location = useLocation();
   const { section } = useParams();
-  const isSection = SECTION_LINK.some(item => item.url === `/${section}`);
+  const isSection = SECTION_LINKS.some(item => item.url === `/${section}`);
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('query') || '';
   const [visibleQuery, setVisibleQuery] = useState(query);

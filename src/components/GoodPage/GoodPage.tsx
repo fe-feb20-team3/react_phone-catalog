@@ -8,7 +8,7 @@ import cn from 'classnames';
 import './GoodPage.scss';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
-import { getGoodDetail, SECTION_LINK, sliderFilter } from '../../helpers';
+import { getGoodDetail, SECTION_LINKS, sliderFilter } from '../../helpers';
 import { GoodTechInfo } from './GoodTechInfo';
 import { GoodSpecsInfo } from './GoodSpecsInfo';
 import { CardSlider } from '../CardSlider/CardSlider';
@@ -85,10 +85,10 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
   );
 
   if (match.params.section === 'undefined' && goods && currentType) {
-    const typeParam = SECTION_LINK.find(section => section.type === currentType.type);
+    const typeParam = SECTION_LINKS.find(section => section.type === currentType.type);
 
     if (typeParam) {
-      return <Redirect to={`${typeParam.url}/${match.params.good}`} />;
+      return <Redirect to={`/${typeParam.url}/${match.params.good}`} />;
     }
   }
 

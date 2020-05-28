@@ -11,16 +11,23 @@ interface Props {
 export const Nav: React.FC<Props> = ({ links, className }) => (
   <nav className={`Nav ${className || ''}`}>
     <ul className="Nav__List">
-      {links.map(({ name, url, exact }) => (
+      {links.map(({ name, url, exact, external }) => (
         <li className="Nav__Item" key={name}>
-          <NavLink
-            to={url}
-            exact={exact}
-            className="Nav__Link"
-            activeClassName="Nav__Link--active"
-          >
-            {name}
-          </NavLink>
+          {external && (
+            <a href={url} target="_blank" rel="noopener noreferrer" className="Nav__Link">
+              {name}
+            </a>
+          )}
+          {!external && (
+            <NavLink
+              to={`/${url}`}
+              exact={exact}
+              className="Nav__Link"
+              activeClassName="Nav__Link--active"
+            >
+              {name}
+            </NavLink>
+          )}
         </li>
       ))}
     </ul>

@@ -1,15 +1,47 @@
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc4;
+
 .Breadcrumbs {
   margin-top: 1.5rem;
+  color: $color-icons;
 
   &__List {
     display: flex;
+    align-items: center;
   }
 
   &__Item {
     list-style: none;
+
+    &:first-child {
+      &::before {
+        display: none;
+      }
+    }
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0.5rem;
+      height: 1rem;
+      margin: 0 1rem;
+      mask-image: url(../../images/icons/chevron-arrow-right.svg);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      background-color: $color-icons;
+      transform: translateY(3px);
+    }
   }
 
   &__Link {
-    height: 1rem;
+    text-decoration: none;
+    color: $color-secondary;
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+    }
   }
 }

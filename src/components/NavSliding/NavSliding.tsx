@@ -6,7 +6,7 @@ import './NavSliding.scss';
 import { Icon } from '../Icon';
 import { CartContext } from '../Cart';
 import { FavoritesContext } from '../Favorites';
-import { SECTION_LINK, FOOTER_LINKS } from '../../helpers';
+import { SECTION_LINKS, FOOTER_LINKS } from '../../helpers';
 
 export const NavSliding = () => {
   const location = useLocation();
@@ -68,10 +68,10 @@ export const NavSliding = () => {
                 Home
               </Link>
             </li>
-            {SECTION_LINK.map(({ name, url }) => (
+            {SECTION_LINKS.map(({ name, url }) => (
               <li className="NavSliding__Item" key={name}>
                 <Link
-                  to={url}
+                  to={`/${url}`}
                   className="NavSliding__Link NavSliding__Link--primary"
                 >
                   {name}

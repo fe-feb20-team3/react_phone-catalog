@@ -5,7 +5,7 @@ import './Header.scss';
 import { Nav } from '../Nav';
 import { Search } from '../Search';
 import { Icon } from '../Icon';
-import { SECTION_LINK } from '../../helpers';
+import { SECTION_LINKS } from '../../helpers';
 import { CartContext } from '../Cart';
 import { FavoritesContext } from '../Favorites';
 import { NavSliding } from '../NavSliding';
@@ -29,7 +29,7 @@ export const Header = () => {
           Home
         </NavLink>
       </div>
-      <Nav links={SECTION_LINK} className="Header__Nav" />
+      <Nav links={SECTION_LINKS} className="Header__Nav" />
       <div className="Header__Search">
         <Route path="/:section" exact component={Search} />
       </div>

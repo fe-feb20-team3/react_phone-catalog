@@ -271,17 +271,18 @@ $border-width: 1px;
       transform: translateY(0);
     }
 
-    &:hover,
-    &:focus {
-      font-weight: 600;
-    }
-
     &--primary {
       font-weight: 500;
       font-size: 72px;
       line-height: 80px;
       letter-spacing: -0.04em;
       text-transform: capitalize;
+      color: $color-secondary;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $color-primary;
+      }
 
       @media screen and (max-width: $screen-extra-small) {
         font-size: 30px;
