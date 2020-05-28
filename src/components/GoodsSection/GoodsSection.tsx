@@ -8,7 +8,7 @@ import { Pagination, SelectPerPage } from '../Pagination';
 import { NotAvailable } from '../NotAvailable';
 import {
   sortBy,
-  SECTION_LINK,
+  SECTION_LINKS,
   SORT_TYPES,
   PER_PAGE_SETTINGS,
 } from '../../helpers';
@@ -49,7 +49,7 @@ export const GoodsSection: React.FC<Props> = ({ goods }) => {
   }
 
   const { section } = useParams();
-  const sectionProp = SECTION_LINK.find(link => link.url === `/${section}`);
+  const sectionProp = SECTION_LINKS.find(link => link.url === section);
 
   const filteredGoods = useMemo(
     () => goods.filter(good => good.type === sectionProp?.type),

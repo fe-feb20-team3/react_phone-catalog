@@ -39,13 +39,25 @@ interface GoodDetail {
   };
 }
 
-interface Link {
+interface SitemapLink {
   name: string;
-  title?: string;
   url: string;
+  title?: string;
   type?: string;
   exact?: boolean;
   imgUrl?: string;
+  external?: boolean;
+  children?: Link[];
+}
+
+interface Link {
+  name: string;
+  url: string;
+  title?: string;
+  type?: string;
+  exact?: boolean;
+  imgUrl?: string;
+  external?: boolean;
 }
 
 interface Banners {
@@ -72,6 +84,8 @@ interface Match {
   params: {
     good: string;
     section: string;
+    levelOne?: string;
+    levelTwo?: string;
   };
   path: string;
   url: string;
@@ -79,6 +93,11 @@ interface Match {
 
 interface Favorite {
   id: string;
+}
+
+interface GoodsContextType {
+  goods: Good[];
+  setSitemap: (goods: Good[]) => void;
 }
 
 interface FavoritesContextType {

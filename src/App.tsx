@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import './App.scss';
@@ -13,13 +13,14 @@ import { Favorites } from './components/Favorites/Favorites';
 import { Cart, CartContextWrapper } from './components/Cart';
 import { Checkout } from './components/Checkout';
 import { Breadcrumbs } from './components/Breadcrumbs';
+import { GoodsContext } from './components/Goods';
 
 export const App = () => {
   const [goods, setGoods] = useState<Good[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const myWidth = useRef<HTMLDivElement>(null);
+  const { setSitemap } = useContext(GoodsContext);
 
   const loadGoods = async () => {
     setIsLoading(true);
@@ -30,6 +31,7 @@ export const App = () => {
       const preparedData = data.filter(product => product.type);
 
       setGoods(preparedData);
+      setSitemap(preparedData);
       setIsLoaded(true);
     } catch (error) {
       setErrorMessage(String(error));
@@ -47,10 +49,7 @@ export const App = () => {
       <CartContextWrapper>
         <FavoritesContextWrapper>
           <Header />
-          <div
-            className="container"
-            ref={myWidth}
-          >
+          <div className="container">
             {errorMessage && <div>{errorMessage}</div>}
             {isLoading && isLoaded && ''}
             <Switch>
@@ -70,7 +69,7 @@ export const App = () => {
           </div>
         </FavoritesContextWrapper>
       </CartContextWrapper>
-      <Footer />
+    <Footer />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import './ShopCategory.scss';
 import { Link } from 'react-router-dom';
-import { SECTION_LINK } from '../../helpers';
+import { SECTION_LINKS } from '../../helpers';
 
 interface Props {
   goods: Good[];
@@ -14,7 +14,7 @@ export const ShopCategory: React.FC<Props> = ({ goods }) => (
     </h2>
     <div className="Category__Container">
       <ul className="Category__List">
-        {SECTION_LINK.map(link => (
+        {SECTION_LINKS.map(link => (
           <li
             className="Category__Item"
             key={link.name}

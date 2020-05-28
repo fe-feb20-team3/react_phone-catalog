@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { FavoritesContext } from '../Favorites';
 import { PrimaryButton } from '../Buttons';
@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const GoodItem: React.FC<Props> = ({ good }) => {
-  const { section } = useParams();
   const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
   const { cart } = useContext(CartContext);
 
@@ -25,7 +24,7 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
 
   return (
     <article key={good.id} className="GoodsList__Item GoodItem">
-      <Link to={`/${section}/${good.id}`} className="GoodItem__Link">
+      <Link to={`/${good.type}/${good.id}`} className="GoodItem__Link">
         <img
           src={good.imageUrl}
           alt={good.name}
