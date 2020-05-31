@@ -21,6 +21,10 @@ $screen-small: 768px;
   &__Link {
     text-decoration: none;
     display: block;
+
+    &:hover .Category__Image {
+      transform: scale(1.25);
+    }
   }
 
   &__Image {
@@ -28,10 +32,6 @@ $screen-small: 768px;
     object-fit: cover;
     object-position: center;
     transition: all 0.8s;
-
-    &:hover {
-      transform: scale(1.25);
-    }
   }
 
   &__ImageContainer {

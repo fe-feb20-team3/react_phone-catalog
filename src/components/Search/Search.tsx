@@ -11,7 +11,7 @@ export const Search = () => {
   const history = useHistory();
   const location = useLocation();
   const { section } = useParams();
-  const isSection = SECTION_LINKS.some(item => item.url === `/${section}`);
+  const isSection = SECTION_LINKS.some(item => item.url === section);
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('query') || '';
   const [visibleQuery, setVisibleQuery] = useState(query);

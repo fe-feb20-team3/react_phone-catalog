@@ -69,7 +69,7 @@ export const App = () => {
           </div>
         </FavoritesContextWrapper>
       </CartContextWrapper>
-    <Footer />
+      <Footer />
     </>
   );
 };
