@@ -1,46 +1,4 @@
-$color-primary: #313237;
-$color-secondary: #89939a;
-
-$screen-min: 320px;
-$screen-extra-small: 420px;
-$screen-small: 768px;
-$screen-medium: 1024px;
-$screen-large: 1200px;
-$screen-max: 1136px;
-
-@mixin hoverAndFocus($_heightLine, $_beforeColor, $_afterColor) {
-  position: relative;
-  transition: all 0.6s;
-  outline: none;
-
-  &:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: $_heightLine;
-    background: $_beforeColor;
-    transition: all 0.3s;
-  }
-
-  &:hover,
-  &:focus {
-    &:before {
-      left: 0;
-      width: 100%;
-      background: $_afterColor;
-    }
-  }
-}
-
-%uppercase {
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
+@import '../../style/utils';
 
 .Nav {
   height: 100%;

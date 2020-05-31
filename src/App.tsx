@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import './App.scss';
 import { getGoods } from './helpers';
 import { FavoritesContextWrapper } from './components/Favorites';
 import { Header } from './components/Header';

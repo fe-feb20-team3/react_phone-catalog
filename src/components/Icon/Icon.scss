@@ -1,9 +1,4 @@
-$color-primary: #313237;
-$color-icons: #b4bdc4;
-$color-elements: #e2e6e9;
-$color-white: #fff;
-$color-red: #eb5757;
-$border-width: 1px;
+@import '../../style/utils';
 
 @mixin iconSize {
   &--size1 {
@@ -52,7 +47,6 @@ $border-width: 1px;
   background-color:transparent;
   transition: color .2s;
   text-shadow: 0 0 1px rgba($color-primary, .5);
-  position: relative;
   overflow: hidden;
   transform: translateZ(0);
   outline: none;

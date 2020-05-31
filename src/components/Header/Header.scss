@@ -1,12 +1,4 @@
-$color-elements: #e2e6e9;
-$color-white: #fff;
-
-$screen-min: 320px;
-$screen-extra-small: 420px;
-$screen-small: 768px;
-$screen-medium: 1024px;
-$screen-large: 1200px;
-$screen-max: 1136px;
+@import '../../style/utils';
 
 .Header {
   position: sticky;
@@ -52,7 +44,7 @@ $screen-max: 1136px;
     display: flex;
     align-items: center;
     height: 100%;
-    border-left: 1px solid #e2e6e9;
+    border-left: 1px solid $color-elements;
   }
 
   &__Nav {

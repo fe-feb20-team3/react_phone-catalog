@@ -1,16 +1,9 @@
-$color-icons: #b4bdc4;
-$color-elements: #e2e6e9;
-$color-primary: #313237;
-$color-secondary: #89939a;
-
-$screen-extra-small: 420px;
-$screen-custom-small: 520px;
-$screen-small: 768px;
-$screen-medium: 1024px;
+@import '../../style/utils';
 
 .Cart {
   margin: 5rem 0;
   transition: all 0.3s;
+
   &__Title {
     margin-bottom: 1.5rem;
   }
@@ -39,22 +32,22 @@ $screen-medium: 1024px;
   }
 
   &__ButtonContainer {
-    width: 200px;
-    height: 40px;
+    width: 12.5rem;
+    height: 2.5rem;
     margin: 3rem auto 0;
   }
 
   &__GoShop {
     text-decoration: none;
     text-align: center;
-    line-height: 40px;
+    line-height: 2.5rem;
     display: block;
     border: 0;
     outline: 0;
     width: 100%;
     height: 100%;
     padding: 0;
-    color: #fff;
+    color: $color-white;
     font-size: 14px;
     cursor: pointer;
     transition: all 0.4s;
@@ -65,7 +58,7 @@ $screen-medium: 1024px;
     &:hover {
       border: 1px solid $color-primary;
       color: $color-primary;
-      background-color: #fff;
+      background-color: $color-white;
       font-weight: 500;
     }
   }
@@ -225,7 +218,7 @@ $screen-medium: 1024px;
 
   &__ModelCount {
     margin: 0 1rem;
-    color: #000;
+    color: $color-primary;
     font-weight: 500;
     font-size: 14px;
 
@@ -241,7 +234,7 @@ $screen-medium: 1024px;
     border: 0;
     outline: 0;
     border: 1px solid $color-icons;
-    background-color: #fff;
+    background-color: $color-white;
     display: flex;
     position: relative;
     transition: all 0.3s;
@@ -266,7 +259,7 @@ $screen-medium: 1024px;
     position: absolute;
     width: 12px;
     height: 2px;
-    background-color: #000;
+    background-color: $color-primary;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -342,7 +335,7 @@ $screen-medium: 1024px;
     width: 100%;
     height: 3rem;
     background-color: $color-primary;
-    color: #fff;
+    color: $color-white;
     font-size: 14px;
     cursor: pointer;
     transition: all 0.4s;
@@ -351,10 +344,11 @@ $screen-medium: 1024px;
     box-sizing: border-box;
     text-align: center;
     line-height: 3rem;
+    
     &:hover {
       border: 1px solid $color-primary;
       color: $color-primary;
-      background-color: #fff;
+      background-color: $color-white;
       font-weight: 500;
       box-sizing: border-box;
     }

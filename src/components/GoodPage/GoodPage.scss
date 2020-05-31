@@ -1,9 +1,4 @@
-$color-primary: #313237;
-$color-secondary: #89939a;
-$color-elements: #e2e6e9;
-$screen-medium: 1024px;
-$screen-extra-small: 420px;
-$screen-custom-small: 525px;
+@import '../../style/utils';
 
 .GoodPage {
   &__SubHeading {
@@ -23,7 +18,7 @@ $screen-custom-small: 525px;
 
   &__Loading {
     margin: 0 auto;
-    width: 300px;
+    width: 20rem;
     display: flex;
     justify-content: center;
   }
@@ -85,7 +80,7 @@ $screen-custom-small: 525px;
     list-style: none;
     width: 5rem;
     height: 5rem;
-    border: 1px solid #c4c4c4;
+    border: 1px solid $color-elements;
     box-sizing: border-box;
     transition: all 0.3s;
 
@@ -100,7 +95,7 @@ $screen-custom-small: 525px;
     width: 100%;
 
     &--current {
-      border: 1px solid black;
+      border: 1px solid $color-primary;
       box-sizing: border-box;
     }
   }

@@ -1,12 +1,4 @@
-$color-hover-bg: #fafbfc;
-$color-primary: #313237;
-$color-icons: #b4bdc4;
-$color-elements: #e2e6e9;
-$color-secondary: #89939a;
-$color-white: #fff;
-
-$screen-min: 320px;
-$screen-extra-small: 420px;
+@import '../../style/utils';
 
 .Select {
   cursor: pointer;
@@ -48,7 +40,7 @@ $screen-extra-small: 420px;
       position: absolute;
       content: "";
       width: 100%;
-      height: 40px;
+      height: 2.5rem;
       left: 0;
       top: 0;
       z-index: 3;
@@ -56,7 +48,7 @@ $screen-extra-small: 420px;
   }
 
   &__Closest {
-    height: 40px;
+    height: 2.5rem;
   }
 
   &__Arrow {

@@ -1,7 +1,4 @@
-$color-icons: #b4bdc4;
-$color-primary: #313237;
-$color-elements: #e2e6e9;
-$screen-extra-small: 420px;
+@import '../../style/utils';
 
 .Banner {
   margin: 2.5rem auto 5rem;
@@ -24,7 +21,7 @@ $screen-extra-small: 420px;
     outline: 0;
     border: 1px solid $color-icons;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: $color-white;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     transition: all 0.3s;
 
@@ -96,13 +93,3 @@ $screen-extra-small: 420px;
     }
   }
 }
-
-// @media (max-width: 1200px) {
-//   .Banner {
-
-//     &__Slider {
-//       width: 700px;
-
-//     }
-//   }
-// }

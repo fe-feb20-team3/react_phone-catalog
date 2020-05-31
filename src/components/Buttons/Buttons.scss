@@ -1,17 +1,4 @@
-$color-primary: #313237;
-$color-secondary: #89939a;
-$color-icons: #b4bdc4;
-$color-elements: #e2e6e9;
-$color-hover-bg: #fafbfc;
-$color-white: #fff;
-$color-green: #27ae60;
-
-%buttons {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: 0;
-}
+@import '../../style/utils';
 
 .Button {
   @extend %buttons;
@@ -47,8 +34,8 @@ $color-green: #27ae60;
       border-color: $color-elements;
 
       &:hover {
-      border-color:#eb5757;
-      color: #eb5757;
+      border-color: $color-red;
+      color: $color-red;
       }
     }
   }

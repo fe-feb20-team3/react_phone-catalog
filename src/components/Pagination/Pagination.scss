@@ -1,7 +1,4 @@
-$color-primary: #313237;
-$color-icons: #b4bdc4;
-$color-white: #fff;
-$border-width: 1px;
+@import '../../style/utils';
 
 .Pagination {
   &__List {

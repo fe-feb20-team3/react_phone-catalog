@@ -1,7 +1,4 @@
-$color-primary: #313237;
-$color-elements: #e2e6e9;
-
-$screen-extra-small: 420px;
+@import '../../style/utils';
 
 .Search {
   width: 100%;
@@ -24,7 +21,7 @@ $screen-extra-small: 420px;
     outline: none;
 
     &::placeholder {
-      color: #b4bdc4;
+      color: $color-icons;
     }
   }
 

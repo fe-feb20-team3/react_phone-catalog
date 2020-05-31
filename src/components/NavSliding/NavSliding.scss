@@ -1,44 +1,4 @@
-$color-primary: #313237;
-$color-secondary: #89939a;
-$color-icons: #b4bdc4;
-$color-elements: #e2e6e9;
-$color-hover-bg: #fafbfc;
-$color-white: #fff;
-
-$screen-min: 320px;
-$screen-extra-small: 420px;
-$screen-small: 768px;
-$screen-medium: 1024px;
-$screen-large: 1200px;
-$screen-max: 1136px;
-
-$border-width: 1px;
-
-@mixin hoverAndFocus($_heightLine, $_beforeColor, $_afterColor) {
-  position: relative;
-  transition: all 0.6s;
-  outline: none;
-
-  &:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: $_heightLine;
-    background: $_beforeColor;
-    transition: all 0.3s;
-  }
-
-  &:hover,
-  &:focus {
-    &:before {
-      left: 0;
-      width: 100%;
-      background: $_afterColor;
-    }
-  }
-}
+@import '../../style/utils';
 
 .NavSliding {
   z-index: 3;

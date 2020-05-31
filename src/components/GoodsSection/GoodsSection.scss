@@ -1,7 +1,4 @@
-$color-secondary: #89939a;
-
-$screen-min: 320px;
-$screen-extra-small: 420px;
+@import '../../style/utils';
 
 .GoodsSection {
   &__Qty {

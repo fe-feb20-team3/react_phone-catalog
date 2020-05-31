@@ -1,7 +1,4 @@
-$color-icons: #b4bdc4;
-$color-primary: #313237;
-$color-elements: #e2e6e9;
-$screen-extra-small: 420px;
+@import '../../style/utils';
 
 .Card {
   display: grid;
@@ -41,7 +38,7 @@ $screen-extra-small: 420px;
     height: 2rem;
     border: 1px solid $color-icons;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: $color-white;
     margin-left: 1rem;
     outline: 0;
     position: relative;
@@ -94,21 +91,3 @@ $screen-extra-small: 420px;
     }
   }
 }
-
-// @media (max-width: 1200px) {
-//   .Card__Container {
-//     width: 848px;
-//   }
-// }
-
-// @media (max-width: 886px) {
-//   .Card__Container {
-//     width: 560px;
-//   }
-// }
-
-// @media (max-width: 600px) {
-//   .Card__Container {
-//     width: 272px;
-//   }
-// }
