@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { loadGoods } from './store';
+import { loadGoods, addFavorite } from './store';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { GoodsSection } from './components/GoodsSection';
@@ -19,6 +19,16 @@ export const App = () => {
   useEffect(() => {
     dispatch(loadGoods());
   }, [dispatch]);
+
+  useEffect(
+    () => {
+      const favoritesJson = (localStorage.getItem('favoriteProducts'));
+      const favorites = favoritesJson ? [...JSON.parse(favoritesJson)] : [];
+
+      favorites.forEach(item => dispatch(addFavorite(item)));
+    },
+    [],
+  );
 
   return (
     <>

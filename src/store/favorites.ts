@@ -17,13 +17,27 @@ export const removeFavorite = (id: string): RemoveFavorite => ({
   id,
 });
 
+const saveIntoLocaleStorage = (favorites: Array<string>) => {
+  localStorage.setItem('favoriteProducts', JSON.stringify([...favorites]));
+};
+
 const reducer = (favorites = [], action: PossibleAction) => {
   switch (action.type) {
-    case SET_FAVORITE:
-      return [...favorites, action.favorite];
+    case SET_FAVORITE: {
+      const updatedFavorites = [...favorites, action.favorite];
 
-    case REMOVE_FAVORITE:
-      return [...favorites].filter(id => id !== action.id);
+      saveIntoLocaleStorage(updatedFavorites);
+
+      return updatedFavorites;
+    }
+
+    case REMOVE_FAVORITE: {
+      const updatedFavorites = favorites.filter(id => id !== action.id);
+
+      saveIntoLocaleStorage(updatedFavorites);
+
+      return updatedFavorites;
+    }
 
     default:
       return favorites;
