@@ -4,15 +4,16 @@ import cn from 'classnames';
 
 import './NavSliding.scss';
 import { Icon } from '../Icon';
-import { CartContext } from '../Cart';
 import { FavoritesContext } from '../Favorites';
 import { SECTION_LINKS, FOOTER_LINKS } from '../../helpers';
+import { useSelector } from 'react-redux';
+import { getCartGoods } from '../../store';
 
 export const NavSliding = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const { favorites } = useContext(FavoritesContext);
-  const { cart } = useContext(CartContext);
+  const cart = useSelector(getCartGoods);
 
   const handleNavSliding = () => {
     setIsOpen(!isOpen);

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { FavoritesContext } from '../Favorites';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
-import { CartContext } from '../Cart';
 
 interface Props {
   good: Good;
@@ -12,7 +11,6 @@ interface Props {
 
 export const GoodItem: React.FC<Props> = ({ good }) => {
   const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
-  const { cart } = useContext(CartContext);
 
   const handleFavorites = (selectedGood: Good) => {
     if (isFavorite(selectedGood)) {
@@ -74,10 +72,6 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
       <section className="GoodItem__Buttons">
         <div className="GoodItem__Buttons--main">
           <PrimaryButton
-            text={cart.some(prod => prod.id === good.id)
-              ? 'Remove from cart'
-              : 'Add to cart'}
-            selected={cart.some(prod => prod.id === good.id)}
             id={good.id}
           />
         </div>

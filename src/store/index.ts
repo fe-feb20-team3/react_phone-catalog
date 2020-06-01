@@ -6,6 +6,7 @@ import loadingReducer, { finishLoading, startLoading } from './loading';
 import loadedReducer, { setLoaded } from './loaded';
 import errordReducer, { setErrorMessage } from './error';
 import goodsReducer, { setGoods } from './goods';
+import cartReducer from './cart';
 import { fetchGoods } from '../helpers/api';
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   loaded: loadedReducer,
   errorMessage: errordReducer,
   goods: goodsReducer,
+  cart: cartReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
@@ -23,6 +25,7 @@ export const isLoading = (state: RootState) => state.loading;
 export const isLoaded = (state: RootState) => state.loaded;
 export const getError = (state: RootState) => state.errorMessage;
 export const getGoods = (state: RootState) => state.goods;
+export const getCartGoods = (state: RootState) => state.cart;
 
 export const loadGoods = () => {
   return async (dispatch: Dispatch<any>) => {

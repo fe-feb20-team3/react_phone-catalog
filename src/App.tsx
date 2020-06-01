@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchGoods } from './helpers';
-import { loadGoods } from './store';
+import { loadGoods, getCartGoods } from './store';
 
 import { FavoritesContextWrapper } from './components/Favorites';
 import { Header } from './components/Header';
@@ -12,7 +12,7 @@ import { GoodsSection } from './components/GoodsSection';
 import { GoodPage } from './components/GoodPage';
 import { HomePage } from './components/HomePage';
 import { Favorites } from './components/Favorites/Favorites';
-import { Cart, CartContextWrapper } from './components/Cart';
+import { Cart } from './components/Cart';
 import { Checkout } from './components/Checkout';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { GoodsContext } from './components/Goods';
@@ -23,6 +23,11 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const { setSitemap } = useContext(GoodsContext);
+  const cart = useSelector(getCartGoods);
+
+  useEffect(() => {
+      localStorage.setItem('cartItem', JSON.stringify([...cart]))
+  }, [cart])
 
   const loadGoodsInState = async () => {
     setIsLoading(true);
@@ -51,7 +56,6 @@ export const App = () => {
 
   return (
     <>
-      <CartContextWrapper>
         <FavoritesContextWrapper>
           <Header />
           <div className="container">
@@ -73,7 +77,6 @@ export const App = () => {
             </Switch>
           </div>
         </FavoritesContextWrapper>
-      </CartContextWrapper>
       <Footer />
     </>
   );

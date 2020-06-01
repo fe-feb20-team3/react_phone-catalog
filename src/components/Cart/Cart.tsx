@@ -1,17 +1,16 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './Cart.scss';
-import { getGoods } from '../../store';
-import { CartContext } from './CartContext';
+import { getGoods, getCartGoods } from '../../store';
+import { setCartGoods, changeCount, clearCart } from '../../store/cart';
 
 
 export const Cart = () => {
   const goods: Good[] = useSelector(getGoods);
-  const {
-    cart, changeGoodCount, selectGood, clearCart,
-  } = useContext(CartContext);
+  const cart = useSelector(getCartGoods);
+  const dispatch = useDispatch();
   const [goodForBuy, setGoodForBuy] = useState<Good[]>(
     goods.filter(good => cart.some(prod => prod.id === good.id)),
   );
@@ -100,7 +99,7 @@ export const Cart = () => {
                     >
                       <button
                         className="Cart__Remove"
-                        onClick={() => selectGood(good.id)}
+                        onClick={() => dispatch(setCartGoods(good.id))}
                         type="button"
                       />
                     </label>
@@ -124,7 +123,7 @@ export const Cart = () => {
                           Boolean(cart
                             .find(prod => prod.id === good.id && prod.count === 1)?.count)
                         }
-                        onClick={() => changeGoodCount(good.id, -1)}
+                        onClick={() => dispatch(changeCount(good.id, -1))}
                       >
                         <span className="Cart__CharMinus" />
                       </button>
@@ -138,7 +137,7 @@ export const Cart = () => {
                           Boolean(cart
                             .find(prod => prod.id === good.id && prod.count === maxForOrder)?.count)
                         }
-                        onClick={() => changeGoodCount(good.id, 1)}
+                        onClick={() =>  dispatch(changeCount(good.id, 1))}
                       >
                         <span className="Cart__CharPlus" />
                       </button>
@@ -182,7 +181,7 @@ export const Cart = () => {
                   <Link
                     to="/checkout"
                     className="Cart__CheckoutButton"
-                    onClick={() => clearCart()}
+                    onClick={() => dispatch(clearCart())}
                   >
                     Checkout
                   </Link>
