@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { useMemo, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 
@@ -23,17 +23,19 @@ export const Favorites = () => {
 
   const [defaultPerPage] = PER_PAGE_SETTINGS;
   const currentPage = Number(searchParams.get('page'));
-  const perPageParam = useMemo(() => searchParams.get('perPage'), [searchParams]);
-  let perPage = Number(defaultPerPage.name);
+  const perPage = useMemo(() => Number(searchParams.get('perPage')), [searchParams]);
 
-  if (PER_PAGE_SETTINGS.find(item => item.name === perPageParam)) {
-    perPage = Number(defaultPerPage?.name);
-  } else {
+  useEffect(() => {
+    if (PER_PAGE_SETTINGS.some(item => item.name === String(perPage))) {
+      return;
+    }
+
     searchParams.set('perPage', defaultPerPage.name);
     history.push({
       search: searchParams.toString(),
     });
-  }
+  }, [perPage]);
+
 
   const paginatedGoods = favoritesProducts.slice(
     (currentPage || 1) * perPage - perPage,

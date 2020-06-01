@@ -9,7 +9,7 @@ interface Props {
 export const GoodTechInfo: React.FC<Props> = ({ goodInfo, goodDetail }) => (
   <ul className="GoodPage__InfoList">
     {ITEM_TECH_INFO.map(item => (
-      <li className="GoodPage__InfoItem">
+      <li className="GoodPage__InfoItem" key={item.name}>
         <p className="GoodPage__InfoTitle">
           {item.name}
         </p>

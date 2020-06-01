@@ -27,7 +27,7 @@ export const App = () => {
 
       favorites.forEach(item => dispatch(addFavorite(item)));
     },
-    [],
+    [dispatch],
   );
 
   return (
