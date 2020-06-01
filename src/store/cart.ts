@@ -4,8 +4,10 @@ const SET_CART_GOODS = 'SET_CART_GOODS';
 const CHANGE_COUNT = 'CHANGE_COUNT';
 const CLEAR_CART = 'CLEAR_CART';
 const SET_FROM_LOCALSTORAGE = 'SET_FROM_LOCALSTORAGE';
+const DELETE_GOODS_FROM_CART = 'DELETE_GOODS_FROM_CART';
 
-type setCartGoods = Action<typeof SET_CART_GOODS> & { id: string };
+type addCartGoods = Action<typeof SET_CART_GOODS> & { id: string };
+type deleteCartGoods = Action<typeof DELETE_GOODS_FROM_CART> & { id: string };
 type changeCount = Action<typeof CHANGE_COUNT> & {
   id: string,
   path: number,
@@ -15,10 +17,15 @@ type setFromLocalStorage = Action<typeof SET_FROM_LOCALSTORAGE> & {
   info: CartGood[],
 };
 
-export const setCartGoods = (id: string): setCartGoods => ({
+export const addCartGoods = (id: string): addCartGoods => ({
   type: SET_CART_GOODS,
   id,
 });
+
+export const deleteCartGoods = (id: string): deleteCartGoods => ({
+  type: DELETE_GOODS_FROM_CART,
+  id,
+})
 
 export const changeCount = (id: string, path: number): changeCount => ({
   type: CHANGE_COUNT,
@@ -33,7 +40,11 @@ export const setFromLS = (info: CartGood[]) => ({
 
 export const clearCart = (): clearCart => ({ type: CLEAR_CART });
 
-type GeneralType = setCartGoods | changeCount | clearCart | setFromLocalStorage;
+type PossibleAction = addCartGoods
+  | changeCount
+  | clearCart
+  | setFromLocalStorage
+  | deleteCartGoods;
 
 let initCart: CartGood[] = [];
 
@@ -41,19 +52,19 @@ if (localStorage.getItem('cartItem')) {
   initCart = [...JSON.parse(localStorage.getItem('cartItem') || '')];
 }
 
-const reducer = (cart = initCart, action: GeneralType) => {
+const reducer = (cart = initCart, action: PossibleAction) => {
   switch (action.type) {
     case SET_CART_GOODS:
-      if (cart.some(good => good.id === action.id)) {
-        return cart.filter(good => good.id !== action.id);
-      } else {
-        const newItem = {
+      return [
+        ...cart,
+        {
           id: action.id,
           count: 1,
         }
+      ];
 
-        return [...cart, newItem];
-      }
+    case DELETE_GOODS_FROM_CART:
+      return cart.filter(good => good.id !== action.id)
 
     case CHANGE_COUNT:
       return cart.map(good => ({

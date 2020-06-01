@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './Cart.scss';
 import { getGoods, getCartGoods } from '../../store';
-import { setCartGoods, changeCount, clearCart } from '../../store/cart';
+import { changeCount, clearCart, deleteCartGoods } from '../../store/cart';
 
 
 export const Cart = () => {
@@ -99,7 +99,7 @@ export const Cart = () => {
                     >
                       <button
                         className="Cart__Remove"
-                        onClick={() => dispatch(setCartGoods(good.id))}
+                        onClick={() => dispatch(deleteCartGoods(good.id))}
                         type="button"
                       />
                     </label>

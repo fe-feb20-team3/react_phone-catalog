@@ -2,7 +2,7 @@ import React from 'react';
 import './Buttons.scss';
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartGoods } from '../../store/cart';
+import { addCartGoods, deleteCartGoods } from '../../store/cart';
 import { getCartGoods } from '../../store';
 
 interface Props {
@@ -23,7 +23,11 @@ export const PrimaryButton: React.FC<Props> = ({ id }) => {
         'Button__Primary--selected': status,
       })}
       onClick={() => {
-        dispatch(setCartGoods(id))
+        if (status) {
+          dispatch(deleteCartGoods(id));
+        } else {
+          dispatch(addCartGoods(id));
+        }
       }}
     >
       {status ? 'Remove from cart' : 'Add to cart'}
