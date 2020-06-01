@@ -1,16 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
 
+import { getGoods } from '../../store';
 import { BannerSlider } from '../Banner';
 import { CardSlider } from '../CardSlider';
 import { sliderFilter, SLIDER_FILTER_TYPE } from '../../helpers';
 import { ShopCategory } from '../ShopCategory';
 
-interface Props {
-  goods: Good[];
-}
-
-export const HomePage: React.FC<Props> = ({ goods }) => {
+export const HomePage = () => {
+  const goods: Good[] = useSelector(getGoods);
   const hotPrices = sliderFilter(goods, SLIDER_FILTER_TYPE.hotPrice, '');
   const highPrices = sliderFilter(goods, SLIDER_FILTER_TYPE.newModels, '');
 
@@ -21,7 +20,7 @@ export const HomePage: React.FC<Props> = ({ goods }) => {
       </Helmet>
       <BannerSlider />
       <CardSlider goods={hotPrices} title="Hot prices" />
-      <ShopCategory goods={goods} />
+      <ShopCategory />
       <CardSlider goods={highPrices} title="Brand new models" />
     </>
   );

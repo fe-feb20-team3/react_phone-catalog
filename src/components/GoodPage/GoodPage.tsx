@@ -4,11 +4,13 @@ import React, {
 import { useParams, useRouteMatch, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import cn from 'classnames';
+import { useSelector } from 'react-redux';
 
+import { getGoods } from '../../store';
 import './GoodPage.scss';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
-import { getGoodDetail, SECTION_LINKS, sliderFilter } from '../../helpers';
+import { fetchGoodDetail, SECTION_LINKS, sliderFilter } from '../../helpers';
 import { GoodTechInfo } from './GoodTechInfo';
 import { GoodSpecsInfo } from './GoodSpecsInfo';
 import { CardSlider } from '../CardSlider/CardSlider';
@@ -16,11 +18,8 @@ import { LoadSpinner } from '../LoadSpinner';
 import { CartContext } from '../Cart';
 import { FavoritesContext } from '../Favorites';
 
-interface Props {
-  goods: Good[];
-}
-
-export const GoodPage: React.FC<Props> = ({ goods }) => {
+export const GoodPage = () => {
+  const goods: Good[] = useSelector(getGoods);
   const { good } = useParams();
   const match: Match = useRouteMatch();
   const [goodDetail, setGoodDetail] = useState<GoodDetail>();
@@ -40,7 +39,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
     setErrorMessage('');
 
     try {
-      const data = await getGoodDetail(goodId);
+      const data = await fetchGoodDetail(goodId);
       const preparedGoodDetail = { ...data };
 
       setGoodDetail(preparedGoodDetail);

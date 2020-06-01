@@ -1,18 +1,19 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { CartContext } from './CartContext';
-import './Cart.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-interface Props {
-  goods: Good[];
-}
+import './Cart.scss';
+import { getGoods } from '../../store';
+import { CartContext } from './CartContext';
 
-export const Cart: React.FC<Props> = ({ goods }) => {
+
+export const Cart = () => {
+  const goods: Good[] = useSelector(getGoods);
   const {
     cart, changeGoodCount, selectGood, clearCart,
   } = useContext(CartContext);
-  const [goodForBuy, setGoodForBuy] = useState<Good[]>(goods
-    .filter(good => cart.some(prod => prod.id === good.id))
+  const [goodForBuy, setGoodForBuy] = useState<Good[]>(
+    goods.filter(good => cart.some(prod => prod.id === good.id)),
   );
 
   const [checkoutHeight] = useState(206);

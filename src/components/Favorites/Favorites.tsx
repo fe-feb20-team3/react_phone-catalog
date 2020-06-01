@@ -1,17 +1,16 @@
 import React, { useContext, useMemo } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
 
+import { getGoods } from '../../store';
 import { FavoritesContext } from './FavoritesContext';
 import { GoodsList } from '../GoodsList';
 import { Pagination, SelectPerPage } from '../Pagination';
 import { PER_PAGE_SETTINGS } from '../../helpers';
 
-interface Props {
-  goods: Good[];
-}
-
-export const Favorites: React.FC<Props> = ({ goods }) => {
+export const Favorites = () => {
+  const goods: Good[] = useSelector(getGoods);
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);

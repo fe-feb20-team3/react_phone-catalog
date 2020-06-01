@@ -10,13 +10,13 @@ h3,
 li {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
 }
 
 html {
   font-size: 16px;
   font-family: "Mont", sans-serif;
   color: $color-primary;
+  scroll-behavior: smooth;
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -47,12 +47,4 @@ h3 {
 
 .section {
   margin: 2rem 0;
-}
-
-.uppercase {
-  @extend %uppercase;
-}
-
-.small-text {
-  @extend %small;
 }

@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import { getGoods } from './helpers';
+import { fetchGoods } from './helpers';
+import { loadGoods } from './store';
+
 import { FavoritesContextWrapper } from './components/Favorites';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -15,21 +18,20 @@ import { Breadcrumbs } from './components/Breadcrumbs';
 import { GoodsContext } from './components/Goods';
 
 export const App = () => {
-  const [goods, setGoods] = useState<Good[]>([]);
+  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const { setSitemap } = useContext(GoodsContext);
 
-  const loadGoods = async () => {
+  const loadGoodsInState = async () => {
     setIsLoading(true);
     setErrorMessage('');
 
     try {
-      const data = await getGoods();
+      const data = await fetchGoods();
       const preparedData = data.filter(product => product.type);
 
-      setGoods(preparedData);
       setSitemap(preparedData);
       setIsLoaded(true);
     } catch (error) {
@@ -40,7 +42,11 @@ export const App = () => {
   };
 
   useEffect(() => {
-    loadGoods();
+    loadGoodsInState();
+  }, []);
+
+  useEffect(() => {
+    dispatch(loadGoods());
   }, []);
 
   return (
@@ -58,12 +64,12 @@ export const App = () => {
               </Route>
             </Switch>
             <Switch>
-              <Route path="/" exact render={() => <HomePage goods={goods} />} />
-              <Route path="/favorites" render={() => <Favorites goods={goods} />} />
-              <Route path="/cart" exact render={() => <Cart goods={goods} />} />
+              <Route path="/" exact render={() => <HomePage />} />
+              <Route path="/favorites" render={() => <Favorites />} />
+              <Route path="/cart" exact render={() => <Cart />} />
               <Route path="/checkout" exact render={() => <Checkout />} />
-              <Route path="/:section" exact render={() => <GoodsSection goods={goods} />} />
-              <Route path="/:section/:good" exact render={() => <GoodPage goods={goods} />} />
+              <Route path="/:section" exact render={() => <GoodsSection />} />
+              <Route path="/:section/:good" exact render={() => <GoodPage />} />
             </Switch>
           </div>
         </FavoritesContextWrapper>
