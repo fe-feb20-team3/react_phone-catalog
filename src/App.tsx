@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getGoods } from './helpers';
+import { fetchGoods } from './helpers';
+import { loadGoods, getCartGoods } from './store';
+
 import { FavoritesContextWrapper } from './components/Favorites';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -9,27 +12,31 @@ import { GoodsSection } from './components/GoodsSection';
 import { GoodPage } from './components/GoodPage';
 import { HomePage } from './components/HomePage';
 import { Favorites } from './components/Favorites/Favorites';
-import { Cart, CartContextWrapper } from './components/Cart';
+import { Cart } from './components/Cart';
 import { Checkout } from './components/Checkout';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { GoodsContext } from './components/Goods';
 
 export const App = () => {
-  const [goods, setGoods] = useState<Good[]>([]);
+  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const { setSitemap } = useContext(GoodsContext);
+  const cart = useSelector(getCartGoods);
 
-  const loadGoods = async () => {
+  useEffect(() => {
+      localStorage.setItem('cartItem', JSON.stringify([...cart]))
+  }, [cart])
+
+  const loadGoodsInState = async () => {
     setIsLoading(true);
     setErrorMessage('');
 
     try {
-      const data = await getGoods();
+      const data = await fetchGoods();
       const preparedData = data.filter(product => product.type);
 
-      setGoods(preparedData);
       setSitemap(preparedData);
       setIsLoaded(true);
     } catch (error) {
@@ -40,12 +47,15 @@ export const App = () => {
   };
 
   useEffect(() => {
-    loadGoods();
+    loadGoodsInState();
+  }, []);
+
+  useEffect(() => {
+    dispatch(loadGoods());
   }, []);
 
   return (
     <>
-      <CartContextWrapper>
         <FavoritesContextWrapper>
           <Header />
           <div className="container">
@@ -58,16 +68,15 @@ export const App = () => {
               </Route>
             </Switch>
             <Switch>
-              <Route path="/" exact render={() => <HomePage goods={goods} />} />
-              <Route path="/favorites" render={() => <Favorites goods={goods} />} />
-              <Route path="/cart" exact render={() => <Cart goods={goods} />} />
+              <Route path="/" exact render={() => <HomePage />} />
+              <Route path="/favorites" render={() => <Favorites />} />
+              <Route path="/cart" exact render={() => <Cart />} />
               <Route path="/checkout" exact render={() => <Checkout />} />
-              <Route path="/:section" exact render={() => <GoodsSection goods={goods} />} />
-              <Route path="/:section/:good" exact render={() => <GoodPage goods={goods} />} />
+              <Route path="/:section" exact render={() => <GoodsSection />} />
+              <Route path="/:section/:good" exact render={() => <GoodPage />} />
             </Switch>
           </div>
         </FavoritesContextWrapper>
-      </CartContextWrapper>
       <Footer />
     </>
   );

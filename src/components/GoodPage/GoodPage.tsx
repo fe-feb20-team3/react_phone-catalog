@@ -4,23 +4,21 @@ import React, {
 import { useParams, useRouteMatch, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import cn from 'classnames';
+import { useSelector } from 'react-redux';
 
+import { getGoods } from '../../store';
 import './GoodPage.scss';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
-import { getGoodDetail, SECTION_LINKS, sliderFilter } from '../../helpers';
+import { fetchGoodDetail, SECTION_LINKS, sliderFilter } from '../../helpers';
 import { GoodTechInfo } from './GoodTechInfo';
 import { GoodSpecsInfo } from './GoodSpecsInfo';
 import { CardSlider } from '../CardSlider/CardSlider';
 import { LoadSpinner } from '../LoadSpinner';
-import { CartContext } from '../Cart';
 import { FavoritesContext } from '../Favorites';
 
-interface Props {
-  goods: Good[];
-}
-
-export const GoodPage: React.FC<Props> = ({ goods }) => {
+export const GoodPage = () => {
+  const goods: Good[] = useSelector(getGoods);
   const { good } = useParams();
   const match: Match = useRouteMatch();
   const [goodDetail, setGoodDetail] = useState<GoodDetail>();
@@ -32,7 +30,6 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
 
   const currentType = goods.find(phone => goodDetail && phone.id === goodDetail.id);
   const sliderItems = sliderFilter(goods, 'hotPrice', '');
-  const { cart } = useContext(CartContext);
   const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
   const loadGoodDetail = async (goodId: string) => {
@@ -40,7 +37,7 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
     setErrorMessage('');
 
     try {
-      const data = await getGoodDetail(goodId);
+      const data = await fetchGoodDetail(goodId);
       const preparedGoodDetail = { ...data };
 
       setGoodDetail(preparedGoodDetail);
@@ -159,10 +156,6 @@ export const GoodPage: React.FC<Props> = ({ goods }) => {
                   <div className="GoodPage__Buttons">
                     <div className="GoodPage__Buttons--main">
                       <PrimaryButton
-                        text={cart.some(prod => prod.id === match.params.good)
-                          ? 'Remove from cart'
-                          : 'Add to cart'}
-                        selected={cart.some(prod => prod.id === match.params.good)}
                         id={match.params.good}
                       />
                     </div>

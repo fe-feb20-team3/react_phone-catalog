@@ -6,13 +6,14 @@ import { Nav } from '../Nav';
 import { Search } from '../Search';
 import { Icon } from '../Icon';
 import { SECTION_LINKS } from '../../helpers';
-import { CartContext } from '../Cart';
 import { FavoritesContext } from '../Favorites';
 import { NavSliding } from '../NavSliding';
+import { useSelector } from 'react-redux';
+import { getCartGoods } from '../../store';
 
 export const Header = () => {
   const { favorites } = useContext(FavoritesContext);
-  const { cart } = useContext(CartContext);
+  const cart = useSelector(getCartGoods);
 
   return (
     <header className="Header" id="top">

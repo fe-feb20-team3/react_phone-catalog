@@ -1,6 +1,9 @@
 import React, { useMemo } from 'react';
 import { useParams, useLocation, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
+
+import { getGoods } from '../../store';
 
 import './GoodsSection.scss';
 import { GoodsList } from '../GoodsList';
@@ -14,11 +17,8 @@ import {
 } from '../../helpers';
 import { Select } from '../Select';
 
-interface Props {
-  goods: Good[];
-}
-
-export const GoodsSection: React.FC<Props> = ({ goods }) => {
+export const GoodsSection = () => {
+  const goods: Good[] = useSelector(getGoods);
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
