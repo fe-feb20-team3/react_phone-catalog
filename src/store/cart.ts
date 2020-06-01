@@ -9,12 +9,12 @@ const DELETE_GOODS_FROM_CART = 'DELETE_GOODS_FROM_CART';
 type addCartGoods = Action<typeof SET_CART_GOODS> & { id: string };
 type deleteCartGoods = Action<typeof DELETE_GOODS_FROM_CART> & { id: string };
 type changeCount = Action<typeof CHANGE_COUNT> & {
-  id: string,
-  path: number,
+  id: string;
+  path: number;
 };
 type clearCart = Action<typeof CLEAR_CART>;
 type setFromLocalStorage = Action<typeof SET_FROM_LOCALSTORAGE> & {
-  info: CartGood[],
+  info: CartGood[];
 };
 
 export const addCartGoods = (id: string): addCartGoods => ({
@@ -36,7 +36,7 @@ export const changeCount = (id: string, path: number): changeCount => ({
 export const setFromLS = (info: CartGood[]) => ({
   type: SET_FROM_LOCALSTORAGE,
   info,
-})
+});
 
 export const clearCart = (): clearCart => ({ type: CLEAR_CART });
 
@@ -60,7 +60,7 @@ const reducer = (cart = initCart, action: PossibleAction) => {
         {
           id: action.id,
           count: 1,
-        }
+        },
       ];
 
     case DELETE_GOODS_FROM_CART:

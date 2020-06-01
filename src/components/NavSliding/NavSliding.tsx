@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import './NavSliding.scss';
+import { getFavorites, getCartGoods } from '../../store';
 import { Icon } from '../Icon';
-import { FavoritesContext } from '../Favorites';
 import { SECTION_LINKS, FOOTER_LINKS } from '../../helpers';
-import { useSelector } from 'react-redux';
-import { getCartGoods } from '../../store';
 
 export const NavSliding = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const { favorites } = useContext(FavoritesContext);
+  const favorites: string[] = useSelector(getFavorites);
   const cart = useSelector(getCartGoods);
 
   const handleNavSliding = () => {

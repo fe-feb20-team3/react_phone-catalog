@@ -1,20 +1,19 @@
 import React, {
   useState,
   useEffect,
-  useContext,
   useCallback,
 } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './Breadcrumbs.scss';
+import { getGoods } from '../../store';
+import { SECTION_LINKS, STATIC_PAGES, SERVICE_PAGES } from '../../helpers';
 import { Icon } from '../Icon';
-import { STATIC_PAGES, SERVICE_PAGES } from '../../helpers/sitemap';
-import { SECTION_LINKS } from '../../helpers';
-import { GoodsContext } from '../Goods';
 
 export const Breadcrumbs = () => {
   const [sitemap, setSitemap] = useState<SitemapLink[]>([]);
-  const { goods } = useContext(GoodsContext);
+  const goods: Good[] = useSelector(getGoods);
 
   const getSitemap = useCallback(
     () => {
@@ -39,7 +38,6 @@ export const Breadcrumbs = () => {
     },
     [goods],
   );
-
 
   useEffect(() => {
     getSitemap();

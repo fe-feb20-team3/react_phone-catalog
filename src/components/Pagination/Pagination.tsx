@@ -18,11 +18,26 @@ export const Pagination: React.FC<Props> = ({ qty, perPage }) => {
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const currentPage = Number(searchParams.get('page'));
+
+  if (currentPage <= 0) {
+    return (
+      <Redirect
+        to={{
+          pathname: `${location.pathname}`,
+          search: `?page=1&perPage=${perPage}`,
+        }}
+      />
+    );
+  }
+
   const currentSort = searchParams.get('sortBy');
   const pages = Array(Math.ceil(qty / Number(perPage))).fill(0, 0, qty).map((p, i) => p + i + 1);
 
   const handleClick = (page: number) => {
-    currentSort && searchParams.set('sortBy', currentSort);
+    if (currentSort) {
+      searchParams.set('sortBy', currentSort);
+    }
+
     searchParams.set('page', `${page}`);
     history.push({
       search: searchParams.toString(),
