@@ -1,6 +1,4 @@
-import React, {
-  useState, useEffect, useMemo, useContext,
-} from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useRouteMatch, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import cn from 'classnames';
@@ -20,7 +18,6 @@ import { GoodTechInfo } from './GoodTechInfo';
 import { GoodSpecsInfo } from './GoodSpecsInfo';
 import { CardSlider } from '../CardSlider';
 import { LoadSpinner } from '../LoadSpinner';
-import { CartContext } from '../Cart';
 
 export const GoodPage = () => {
   const goods: Good[] = useSelector(getGoods);
@@ -42,7 +39,6 @@ export const GoodPage = () => {
 
   const currentType = goods.find(phone => goodDetail && phone.id === goodDetail.id);
   const sliderItems = sliderFilter(goods, 'hotPrice', '');
-  const { cart } = useContext(CartContext);
 
   const loadGoodDetail = async (goodId: string) => {
     setIsLoading(true);
@@ -63,9 +59,9 @@ export const GoodPage = () => {
 
   useEffect(() => {
     if (goods.length) {
-      const goodInfo = goods.find(item => item.id === match.params.good);
+      const goodDetailInfo = goods.find(item => item.id === match.params.good);
 
-      setGoodInfo(goodInfo);
+      setGoodInfo(goodDetailInfo);
     }
   }, [goods, match.params.good]);
 
@@ -168,10 +164,6 @@ export const GoodPage = () => {
                   <div className="GoodPage__Buttons">
                     <div className="GoodPage__Buttons--main">
                       <PrimaryButton
-                        text={cart.some(prod => prod.id === match.params.good)
-                          ? 'Remove from cart'
-                          : 'Add to cart'}
-                        selected={cart.some(prod => prod.id === match.params.good)}
                         id={match.params.good}
                       />
                     </div>

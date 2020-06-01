@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Buttons.scss';
 import cn from 'classnames';
-import { CartContext } from '../Cart';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCartGoods, deleteCartGoods } from '../../store/cart';
+import { getCartGoods } from '../../store';
 
 interface Props {
-  text: string;
-  selected: boolean;
   id: string;
 }
 
-export const PrimaryButton: React.FC<Props> = ({ text, selected, id }) => {
-  const { selectGood } = useContext(CartContext);
+export const PrimaryButton: React.FC<Props> = ({ id }) => {
+  const dispatch = useDispatch();
+  const cart = useSelector(getCartGoods);
+  const status = cart.some(good => good.id === id);
 
   return (
     <button
@@ -18,11 +20,17 @@ export const PrimaryButton: React.FC<Props> = ({ text, selected, id }) => {
       className={cn({
         Button: true,
         Button__Primary: true,
-        'Button__Primary--selected': selected,
+        'Button__Primary--selected': status,
       })}
-      onClick={() => selectGood(id)}
+      onClick={() => {
+        if (status) {
+          dispatch(deleteCartGoods(id));
+        } else {
+          dispatch(addCartGoods(id));
+        }
+      }}
     >
-      {text}
+      {status ? 'Remove from cart' : 'Add to cart'}
     </button>
   );
 };

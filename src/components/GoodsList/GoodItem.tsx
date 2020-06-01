@@ -1,11 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getFavorites, addFavorite, removeFavorite } from '../../store';
+import { getFavorites, removeFavorite, addFavorite } from '../../store';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
-import { CartContext } from '../Cart';
 
 interface Props {
   good: Good;
@@ -14,7 +13,6 @@ interface Props {
 export const GoodItem: React.FC<Props> = ({ good }) => {
   const favorites: Array<string> = useSelector(getFavorites);
   const dispatch = useDispatch();
-  const { cart } = useContext(CartContext);
 
   const isFavorite = useMemo(
     () => (goodId: string) => favorites.some(id => id === goodId),
@@ -81,10 +79,6 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
       <section className="GoodItem__Buttons">
         <div className="GoodItem__Buttons--main">
           <PrimaryButton
-            text={cart.some(prod => prod.id === good.id)
-              ? 'Remove from cart'
-              : 'Add to cart'}
-            selected={cart.some(prod => prod.id === good.id)}
             id={good.id}
           />
         </div>
