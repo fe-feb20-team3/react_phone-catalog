@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { FavoritesContext } from '../Favorites';
+import { getFavorites, addFavorite, removeFavorite } from '../../store';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
 import { CartContext } from '../Cart';
@@ -11,14 +12,20 @@ interface Props {
 }
 
 export const GoodItem: React.FC<Props> = ({ good }) => {
-  const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
+  const favorites: Array<string> = useSelector(getFavorites);
+  const dispatch = useDispatch();
   const { cart } = useContext(CartContext);
 
+  const isFavorite = useMemo(
+    () => (goodId: string) => favorites.some(id => id === goodId),
+    [favorites],
+  );
+
   const handleFavorites = (selectedGood: Good) => {
-    if (isFavorite(selectedGood)) {
-      removeFavorite(selectedGood);
+    if (favorites.some(favorite => favorite === selectedGood.id)) {
+      dispatch(removeFavorite(selectedGood.id));
     } else {
-      addFavorite(selectedGood);
+      dispatch(addFavorite(selectedGood.id));
     }
   };
 
@@ -82,7 +89,7 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
           />
         </div>
         <label onClick={() => handleFavorites(good)}>
-          <Icon name={isFavorite(good) ? 'favorites-filled' : 'favorites'} border inActive={false} />
+          <Icon name={isFavorite(good.id) ? 'favorites-filled' : 'favorites'} border inActive={false} />
         </label>
       </section>
     </article>

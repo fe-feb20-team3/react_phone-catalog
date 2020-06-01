@@ -4,19 +4,23 @@ import React, {
 import { useParams, useRouteMatch, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import cn from 'classnames';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getGoods } from '../../store';
 import './GoodPage.scss';
+import {
+  getGoods,
+  getFavorites,
+  addFavorite,
+  removeFavorite,
+} from '../../store';
+import { fetchGoodDetail, SECTION_LINKS, sliderFilter } from '../../helpers';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
-import { fetchGoodDetail, SECTION_LINKS, sliderFilter } from '../../helpers';
 import { GoodTechInfo } from './GoodTechInfo';
 import { GoodSpecsInfo } from './GoodSpecsInfo';
-import { CardSlider } from '../CardSlider/CardSlider';
+import { CardSlider } from '../CardSlider';
 import { LoadSpinner } from '../LoadSpinner';
 import { CartContext } from '../Cart';
-import { FavoritesContext } from '../Favorites';
 
 export const GoodPage = () => {
   const goods: Good[] = useSelector(getGoods);
@@ -29,10 +33,16 @@ export const GoodPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  const favorites: Array<string> = useSelector(getFavorites);
+  const dispatch = useDispatch();
+  const isFavorite = useMemo(
+    () => (goodId: string) => favorites.some(id => id === goodId),
+    [favorites],
+  );
+
   const currentType = goods.find(phone => goodDetail && phone.id === goodDetail.id);
   const sliderItems = sliderFilter(goods, 'hotPrice', '');
   const { cart } = useContext(CartContext);
-  const { isFavorite, addFavorite, removeFavorite } = useContext(FavoritesContext);
 
   const loadGoodDetail = async (goodId: string) => {
     setIsLoading(true);
@@ -69,10 +79,10 @@ export const GoodPage = () => {
   };
 
   const handleFavorites = (selectedGood: Good) => {
-    if (isFavorite(selectedGood)) {
-      removeFavorite(selectedGood);
+    if (favorites.some(favorite => favorite === selectedGood.id)) {
+      dispatch(removeFavorite(selectedGood.id));
     } else {
-      addFavorite(selectedGood);
+      dispatch(addFavorite(selectedGood.id));
     }
   };
 

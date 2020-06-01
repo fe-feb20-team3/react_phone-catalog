@@ -6,15 +6,12 @@ import { HashRouter } from 'react-router-dom';
 import './style/index.scss';
 import store from './store';
 import { App } from './App';
-import { GoodsContextWrapper } from './components/Goods';
 
 const Root = () => (
   <Provider store={store}>
-    <GoodsContextWrapper>
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </GoodsContextWrapper>
+    <HashRouter>
+      <App />
+    </HashRouter>
   </Provider>
 );
 

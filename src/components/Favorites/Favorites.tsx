@@ -1,20 +1,21 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 
-import { getGoods } from '../../store';
-import { FavoritesContext } from './FavoritesContext';
+import { getGoods, getFavorites } from '../../store';
 import { GoodsList } from '../GoodsList';
 import { Pagination, SelectPerPage } from '../Pagination';
 import { PER_PAGE_SETTINGS } from '../../helpers';
 
 export const Favorites = () => {
   const goods: Good[] = useSelector(getGoods);
+  const favorites: Array<string> = useSelector(getFavorites);
+
   const history = useHistory();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const { favorites } = useContext(FavoritesContext);
+
   const favoritesProducts = useMemo(
     () => [...goods].filter(product => favorites.some(id => id === product.id)),
     [favorites, goods],

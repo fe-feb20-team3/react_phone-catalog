@@ -1,1 +1,1 @@
-export * from './FavoritesContext';
+export * from './Favorites';

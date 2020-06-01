@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import { Link, NavLink, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './Header.scss';
+import { getFavorites } from '../../store';
 import { Nav } from '../Nav';
 import { Search } from '../Search';
 import { Icon } from '../Icon';
 import { SECTION_LINKS } from '../../helpers';
 import { CartContext } from '../Cart';
-import { FavoritesContext } from '../Favorites';
 import { NavSliding } from '../NavSliding';
 
 export const Header = () => {
-  const { favorites } = useContext(FavoritesContext);
+  const favorites: Favorite[] = useSelector(getFavorites);
   const { cart } = useContext(CartContext);
 
   return (
