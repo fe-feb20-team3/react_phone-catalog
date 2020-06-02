@@ -33,10 +33,9 @@ export const GoodPage = () => {
   const favorites: Array<string> = useSelector(getFavorites);
   const dispatch = useDispatch();
   const isFavorite = useMemo(
-    () => (goodId: string) => favorites.some(id => id === goodId),
+    () => (goodId: string) =>  favorites.some(id => id === goodId),
     [favorites],
   );
-
   const currentType = goods.find(phone => goodDetail && phone.id === goodDetail.id);
   const sliderItems = sliderFilter(goods, 'hotPrice', '');
 
@@ -74,11 +73,11 @@ export const GoodPage = () => {
     setActiveImageIndex(i);
   };
 
-  const handleFavorites = (selectedGood: Good) => {
-    if (favorites.some(favorite => favorite === selectedGood.id)) {
-      dispatch(removeFavorite(selectedGood.id));
+  const handleFavorites = (goodId: string) => {
+    if (favorites.some(favorite => favorite === goodId)) {
+      dispatch(removeFavorite(goodId));
     } else {
-      dispatch(addFavorite(selectedGood.id));
+      dispatch(addFavorite(goodId));
     }
   };
 
@@ -124,7 +123,7 @@ export const GoodPage = () => {
                         className={cn({
                           'GoodPage__Image--current': i === activeImageIndex,
                         },
-                        'GoodPage__ImageItem')}
+                          'GoodPage__ImageItem')}
                         key={image}
                       >
                         <a href="./#" onClick={e => handleImages(e, i)}>

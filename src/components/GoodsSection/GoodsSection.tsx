@@ -16,6 +16,7 @@ import {
   PER_PAGE_SETTINGS,
 } from '../../helpers';
 import { Select } from '../Select';
+import { NotFound } from '../NotFound';
 
 export const GoodsSection = () => {
   const goods: Good[] = useSelector(getGoods);
@@ -75,8 +76,9 @@ export const GoodsSection = () => {
 
   return (
     <>
-      {sortedGoods.length === 0 && (
-        <NotAvailable />
+      {filteredGoods.length === 0 && <NotAvailable />}
+      {filteredGoods.length > 0 && searchedGoods.length === 0 && (
+        <NotFound />
       )}
       {sortedGoods.length >= 1 && (
         <section className="section GoodsSection">

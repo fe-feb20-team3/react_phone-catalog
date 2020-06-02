@@ -7,6 +7,7 @@ import { getGoods, getFavorites } from '../../store';
 import { GoodsList } from '../GoodsList';
 import { Pagination, SelectPerPage } from '../Pagination';
 import { PER_PAGE_SETTINGS } from '../../helpers';
+import { NotFound } from '../NotFound';
 
 export const Favorites = () => {
   const goods: Good[] = useSelector(getGoods);
@@ -62,6 +63,7 @@ export const Favorites = () => {
         )}
       </div>
       <GoodsList goods={paginatedGoods} />
+      {paginatedGoods.length === 0 && <NotFound />}
       {favoritesProducts.length > perPage && (
         <div className="Pagination">
           <Pagination qty={favoritesProducts.length} perPage={perPage} />
