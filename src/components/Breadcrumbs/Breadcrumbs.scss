@@ -7,10 +7,18 @@
   &__List {
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: $screen-extra-small) {
+      display: block;
+    }
   }
 
   &__Item {
     list-style: none;
+
+    @media screen and (max-width: $screen-extra-small) {
+      display: inline;
+    }
 
     &:first-child {
       &::before {
