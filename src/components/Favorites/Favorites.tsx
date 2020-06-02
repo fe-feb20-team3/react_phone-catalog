@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 
@@ -42,6 +42,17 @@ export const Favorites = () => {
     (currentPage || 1) * perPage - perPage,
     (currentPage || 1) * perPage,
   );
+
+  if (favoritesProducts.length < perPage && currentPage > 1) {
+    return (
+      <Redirect
+        to={{
+          pathname: `${location.pathname}`,
+          search: `?page=1&perPage=${perPage}`,
+        }}
+      />
+    );
+  };
 
   return (
     <section className="section GoodsSection">
