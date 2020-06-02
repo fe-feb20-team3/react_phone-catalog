@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ecdece33f0631f6cf97ace96615496b",
+    "revision": "9c462e7bb786d6da4f405b82beb65393",
     "url": "./index.html"
   },
   {
-    "revision": "ad626582439e22488247",
-    "url": "./static/css/main.dd458a40.chunk.css"
+    "revision": "879ce985c32c2803d7ce",
+    "url": "./static/css/main.de37c28a.chunk.css"
   },
   {
     "revision": "7eb04777306bb518b877",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/2.7ba7eb13.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ad626582439e22488247",
-    "url": "./static/js/main.e1613779.chunk.js"
+    "revision": "879ce985c32c2803d7ce",
+    "url": "./static/js/main.a0c2d3cb.chunk.js"
   },
   {
     "revision": "13d57103233adbc95222",
@@ -74,6 +74,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "4f88f62b2ce66504de2d4beded8f0381",
     "url": "./static/media/neil-sony-1200.4f88f62b.jpg"
+  },
+  {
+    "revision": "4f88f62b2ce66504de2d4beded8f0381",
+    "url": "./static/media/neil-sony-600.4f88f62b.jpg"
+  },
+  {
+    "revision": "3b7ff6f3d9b7bae4444cf83c7a555e9a",
+    "url": "./static/media/neil-sony.3b7ff6f3.jpg"
   },
   {
     "revision": "f998a5f5afa4496e5903c66d2e7333df",
