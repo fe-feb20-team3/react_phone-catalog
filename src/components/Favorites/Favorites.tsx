@@ -58,6 +58,7 @@ export const Favorites = () => {
     <section className="section GoodsSection">
       <Helmet>
         <title>Favorite Goods</title>
+        <meta name="description" content="Your favorites goods on our Store" />
       </Helmet>
       <h1 className="GoodsSection__Heading">
         Favorite Goods

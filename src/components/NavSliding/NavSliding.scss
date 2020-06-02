@@ -112,7 +112,7 @@
       display: block;
       width: 160%;
       height: 100%;
-      background-image: url(../../images/neil-sony-1200.jpg);
+      background-image: url(../../images/neil-sony.jpg);
       background-size: cover;
       background-position: center;
       opacity: 0;
@@ -121,6 +121,14 @@
       transition-timing-function: ease-in-out;
       transition-delay: 0.3s;
       z-index: 801;
+
+      @media screen and (max-width: $screen-large) {
+        background-image: url(../../images/neil-sony-1200.jpg);
+      }
+
+      @media screen and (max-width: $screen-small) {
+        background-image: url(../../images/neil-sony-600.jpg);
+      }
 
       .show & {
         opacity: 1;

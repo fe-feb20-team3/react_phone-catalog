@@ -17,6 +17,7 @@ export const HomePage = () => {
     <>
       <Helmet>
         <title>Phone Store</title>
+        <meta name="description" content="Perfect Phones and Tablets for You‎" />
       </Helmet>
       <BannerSlider />
       <CardSlider goods={hotPrices} title="Hot prices" />

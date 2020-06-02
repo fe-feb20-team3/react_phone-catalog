@@ -112,6 +112,7 @@ export const GoodPage = () => {
           <article className="GoodPage">
             <Helmet>
               <title>{goodDetail.name}</title>
+              <meta name="description" content={`${goodDetail.name} - Mobile Store`} />
             </Helmet>
             <h1 className="GoodPage__Heading">{goodDetail.name}</h1>
             <div className="GoodPage__Content">

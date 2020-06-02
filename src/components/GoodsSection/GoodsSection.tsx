@@ -96,6 +96,7 @@ export const GoodsSection = () => {
         <section className="section GoodsSection">
           <Helmet>
             <title>{sectionProp?.title || sectionProp?.name}</title>
+            <meta name="description" content={`${sectionProp?.title || sectionProp?.name} - Mobile Store`} />
           </Helmet>
           <h1 className="GoodsSection__Heading">
             {sectionProp?.title || sectionProp?.name}
