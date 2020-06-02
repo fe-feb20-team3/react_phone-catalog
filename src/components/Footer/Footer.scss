@@ -5,6 +5,10 @@
   position: relative;
   height: 5rem;
 
+  @media screen and (max-width: $screen-extra-small) {
+    height: 10rem;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -15,9 +19,8 @@
   }
 
   &__Content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr 2.5rem;
     align-items: center;
     height: 4rem;
     box-sizing: border-box;
@@ -25,7 +28,8 @@
     padding-bottom: 1rem;
 
     @media screen and (max-width: $screen-extra-small) {
-      justify-content: flex-end;
+      grid-template-columns: 1fr;
+      justify-items: center;
     }
   }
 

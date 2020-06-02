@@ -1,0 +1,8 @@
+@import '../../style/utils';
+
+.BackToTop {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgba($color: $color-white, $alpha: 1);
+}
