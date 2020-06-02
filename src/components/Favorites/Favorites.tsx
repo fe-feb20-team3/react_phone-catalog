@@ -34,7 +34,7 @@ export const Favorites = () => {
     history.push({
       search: searchParams.toString(),
     });
-  }, [perPage]);
+  }, [perPage, defaultPerPage.name, history, searchParams]);
 
 
   const paginatedGoods = favoritesProducts.slice(

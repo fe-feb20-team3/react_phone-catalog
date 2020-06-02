@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { loadGoods, getCartGoods, getFavorites } from './store';
@@ -14,6 +14,7 @@ import { Checkout } from './components/Checkout';
 import { Breadcrumbs } from './components/Breadcrumbs';
 
 export const App = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const cart = useSelector(getCartGoods);
   const favorites = useSelector(getFavorites);
@@ -30,10 +31,14 @@ export const App = () => {
     dispatch(loadGoods());
   }, [dispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="container content-wrapper">
         <Switch>
           <Route path="/" exact />
           <Route path="/:levelOne?/:levelTwo?">

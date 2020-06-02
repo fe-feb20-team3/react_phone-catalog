@@ -1,16 +1,27 @@
 @import '../../style/utils';
 
 .Footer {
-  border-top: 1px solid $color-elements;
+  box-sizing: border-box;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 1px;
+    width: 100%;
+    background-color: $color-elements;
+  }
 
   &__Content {
     display: flex;
     flex-wrap: wrap;
-    height: 4rem;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    height: 4rem;
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     @media screen and (max-width: $screen-extra-small) {
       justify-content: flex-end;
