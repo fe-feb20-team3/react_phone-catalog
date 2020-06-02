@@ -12,7 +12,6 @@ import { Favorites } from './components/Favorites';
 import { Cart } from './components/Cart';
 import { Checkout } from './components/Checkout';
 import { Breadcrumbs } from './components/Breadcrumbs';
-import { BackToTop } from './components/BackToTop';
 
 export const App = () => {
   const location = useLocation();
@@ -56,7 +55,6 @@ export const App = () => {
         </Switch>
       </div>
       <Footer />
-      <BackToTop />
     </>
   );
 };
