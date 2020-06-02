@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useParams, useLocation, useHistory } from 'react-router-dom';
+import { useParams, useLocation, useHistory, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 
@@ -73,6 +73,18 @@ export const GoodsSection = () => {
     (currentPage || 1) * perPage - perPage,
     (currentPage || 1) * perPage,
   );
+
+  if (sortedGoods.length < perPage && currentPage > 1) {
+    return (
+      <Redirect
+        to={{
+          pathname: `${location.pathname}`,
+          search: `?page=1&perPage=${perPage}`,
+        }}
+      />
+    );
+  };
+
 
   return (
     <>
