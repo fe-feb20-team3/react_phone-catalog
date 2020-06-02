@@ -2,8 +2,8 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Dispatch } from 'react';
 
-import loadingReducer, { finishLoading, startLoading } from './loading';
-import loadedReducer, { setLoaded } from './loaded';
+import loadingReducer, { finishLoading, startLoading, setLoaded } from './loading';
+
 import errordReducer, { setErrorMessage } from './error';
 import goodsReducer, { setGoods } from './goods';
 import favoritesReducer, { addFavorite, removeFavorite } from './favorites';
@@ -14,7 +14,6 @@ const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
 
 const rootReducer = combineReducers({
   loading: loadingReducer,
-  loaded: loadedReducer,
   errorMessage: errordReducer,
   goods: goodsReducer,
   favorites: favoritesReducer,
@@ -23,8 +22,8 @@ const rootReducer = combineReducers({
 
 export type RootState = ReturnType<typeof rootReducer>;
 
-export const isLoading = (state: RootState) => state.loading;
-export const isLoaded = (state: RootState) => state.loaded;
+export const isLoading = (state: RootState) => state.loading.isLoading;
+export const isLoaded = (state: RootState) => state.loading.isLoaded;
 export const getError = (state: RootState) => state.errorMessage;
 export const getGoods = (state: RootState) => state.goods;
 export const getFavorites = (state: RootState) => state.favorites;
