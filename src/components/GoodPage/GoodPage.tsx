@@ -121,10 +121,10 @@ export const GoodPage = () => {
                   <ul className="GoodPage__ImageList">
                     {goodDetail.images.map((image, i) => (
                       <li
-                        className={cn({
-                          'GoodPage__Image--current': i === activeImageIndex,
-                        },
-                          'GoodPage__ImageItem')}
+                        className={cn(
+                          'GoodPage__ImageItem',
+                          { 'GoodPage__Image--current': i === activeImageIndex },
+                        )}
                         key={image}
                       >
                         <a href="./#" onClick={e => handleImages(e, i)}>

@@ -30,11 +30,16 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
   return (
     <article key={good.id} className="GoodsList__Item GoodItem">
       <Link to={`/${good.type}/${good.id}`} className="GoodItem__Link">
-        <img
-          src={good.imageUrl}
-          alt={good.name}
-          className="GoodItem__Image"
-        />
+        <picture>
+          <source srcSet={`/img/phones-jxr/${good.id}.0.jxr`} type="image/vnd.ms-photo" />
+          <source srcSet={`/img/phones-jp2/${good.id}.0.jp2`} type="image/jp2" />
+          <source srcSet={`/img/phones-webp/${good.id}.0.webp`} type="image/webp" />
+          <img
+            srcSet={`/img/phones-jpeg/${good.id}.0.jpeg`}
+            alt={good.name}
+            className="GoodItem__Image"
+          />
+        </picture>
         <h3 className="GoodItem__Heading">
           {good.name}
         </h3>
