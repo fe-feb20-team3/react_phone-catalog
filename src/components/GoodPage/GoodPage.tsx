@@ -129,9 +129,18 @@ export const GoodPage = () => {
                       >
                         <a href="./#" onClick={e => handleImages(e, i)}>
                           <picture>
-                            <source srcSet={`./img/phones-jxr/${goodDetail.id}.${i}.jxr`} type="image/vnd.ms-photo" />
-                            <source srcSet={`./img/phones-jp2/${goodDetail.id}.${i}.jp2`} type="image/jp2" />
-                            <source srcSet={`./img/phones-webp/${goodDetail.id}.${i}.webp`} type="image/webp" />
+                            <source
+                              srcSet={`./img/phones-jxr/${goodDetail.id}.${i}.jxr`}
+                              type="image/vnd.ms-photo"
+                            />
+                            <source
+                              srcSet={`./img/phones-jp2/${goodDetail.id}.${i}.jp2`}
+                              type="image/jp2"
+                            />
+                            <source
+                              srcSet={`./img/phones-webp/${goodDetail.id}.${i}.webp`}
+                              type="image/webp"
+                            />
                             <img
                               srcSet={`./img/phones-jpeg/${goodDetail.id}.${i}.jpeg`}
                               alt={goodDetail.name}
@@ -143,9 +152,18 @@ export const GoodPage = () => {
                     ))}
                   </ul>
                   <picture>
-                    <source srcSet={`./img/phones-jxr/${goodDetail.id}.${activeImageIndex}.jxr`} type="image/vnd.ms-photo" />
-                    <source srcSet={`./img/phones-jp2/${goodDetail.id}.${activeImageIndex}.jp2`} type="image/jp2" />
-                    <source srcSet={`./img/phones-webp/${goodDetail.id}.${activeImageIndex}.webp`} type="image/webp" />
+                    <source
+                      srcSet={`./img/phones-jxr/${goodDetail.id}.${activeImageIndex}.jxr`}
+                      type="image/vnd.ms-photo"
+                    />
+                    <source
+                      srcSet={`./img/phones-jp2/${goodDetail.id}.${activeImageIndex}.jp2`}
+                      type="image/jp2"
+                    />
+                    <source
+                      srcSet={`./img/phones-webp/${goodDetail.id}.${activeImageIndex}.webp`}
+                      type="image/webp"
+                    />
                     <img
                       srcSet={`./img/phones-jpeg/${goodDetail.id}.${activeImageIndex}.jpeg`}
                       alt={goodDetail.name}
