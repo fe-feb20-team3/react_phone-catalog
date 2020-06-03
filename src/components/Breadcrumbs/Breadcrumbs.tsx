@@ -58,7 +58,7 @@ export const Breadcrumbs = () => {
           <Link to="/" className="Breadcrumbs__Link">
             <Icon
               name="home"
-              size={1}
+              size="small"
               border={false}
               inActive={false}
             />

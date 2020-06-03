@@ -6,7 +6,7 @@ import './Icon.scss';
 interface Props {
   name: string;
   tag?: number;
-  size?: number;
+  size?: IconSize;
   border: boolean;
   inActive: boolean;
 }
@@ -19,7 +19,7 @@ export const Icon: React.FC<Props> = ({
   inActive,
 }) => (
   <div
-    className={cn(`Icon Icon--size${size}`, {
+    className={cn(`Icon Icon--${size}`, {
       Icon__Border: border,
     })}
   >
@@ -27,7 +27,7 @@ export const Icon: React.FC<Props> = ({
       cn(
         'Icon__Image',
         `Icon__Image--${name}`,
-        `Icon__Image--size${size}`,
+        `Icon__Image--${size}`,
         {
           'Icon__Image--inactive': inActive,
         },
@@ -35,7 +35,7 @@ export const Icon: React.FC<Props> = ({
     }
     />
     {Number(tag) > 0 && (
-      <div className={`Icon__Tag Icon__Tag--size${size}`}>
+      <div className={`Icon__Tag Icon__Tag--${size}`}>
         {tag}
       </div>
     )}

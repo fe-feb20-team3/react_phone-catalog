@@ -179,7 +179,11 @@ export const GoodPage = () => {
                     </div>
                     <div className="GoodPage__Buttons--favorites">
                       <label onClick={() => handleFavorites(good)}>
-                        <Icon name={isFavorite(good) ? 'favorites-filled' : 'favorites'} border inActive={false} />
+                        <Icon
+                          name={isFavorite(good) ? 'favorites-filled' : 'favorites'}
+                          border
+                          inActive={false}
+                        />
                       </label>
                     </div>
                   </div>

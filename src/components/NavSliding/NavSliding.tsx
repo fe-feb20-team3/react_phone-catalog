@@ -41,7 +41,7 @@ export const NavSliding = () => {
                 <Icon
                   name="favorites"
                   tag={favorites.length}
-                  size={3}
+                  size="large"
                   border={false}
                   inActive={false}
                 />
@@ -52,7 +52,7 @@ export const NavSliding = () => {
                 <Icon
                   name="shopping-bag"
                   tag={cart.length}
-                  size={3}
+                  size="large"
                   border={false}
                   inActive={false}
                 />

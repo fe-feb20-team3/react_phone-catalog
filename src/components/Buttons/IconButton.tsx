@@ -12,7 +12,7 @@ export const IconButton: React.FC<Props> = ({ name, border, inActive }) => (
   <button type="button" className="Button Button__Icon">
     <Icon
       name={name}
-      size={2}
+      size="medium"
       border={border}
       inActive={inActive}
     />

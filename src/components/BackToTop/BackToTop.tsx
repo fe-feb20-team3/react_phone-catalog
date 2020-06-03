@@ -29,7 +29,7 @@ export const BackToTop = () => {
       {
         'BackToTop': true,
         'BackToTop--visible': isVisible,
-      }
+      },
     )}>
       <Link
         to="#top"
@@ -38,7 +38,7 @@ export const BackToTop = () => {
       >
         <Icon
           name="arrow-up"
-          size={2}
+          size="medium"
           border={false}
           inActive={false}
         />

@@ -88,7 +88,11 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
           />
         </div>
         <label onClick={() => handleFavorites(good)}>
-          <Icon name={isFavorite(good.id) ? 'favorites-filled' : 'favorites'} border inActive={false} />
+          <Icon
+            name={isFavorite(good.id) ? 'favorites-filled' : 'favorites'}
+            border
+            inActive={false}
+          />
         </label>
       </section>
     </article>

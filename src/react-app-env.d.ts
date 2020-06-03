@@ -132,3 +132,5 @@ interface ItemTechType {
   name: string;
   order: string;
 }
+
+type IconSize = 'small' | 'medium' | 'large';
