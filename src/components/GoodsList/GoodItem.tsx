@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFavorites, removeFavorite, addFavorite } from '../../store';
 import { PrimaryButton } from '../Buttons';
 import { Icon } from '../Icon';
+import { GoodItemProp } from './GoodItemProp';
 
 interface Props {
   good: Good;
@@ -59,26 +60,9 @@ export const GoodItem: React.FC<Props> = ({ good }) => {
       </section>
 
       <section className="GoodItem__PropsList">
-        <div className="GoodItem__PropsItem">
-          <span className="GoodItem__PropsItem--title">Screen</span>
-          <span className="GoodItem__PropsItem--value">
-            {good.screen ? good.screen : '-'}
-          </span>
-        </div>
-
-        <div className="GoodItem__PropsItem">
-          <span className="GoodItem__PropsItem--title">Capacity</span>
-          <span className="GoodItem__PropsItem--value">
-            {good.capacity ? good.capacity : '-'}
-          </span>
-        </div>
-
-        <div className="GoodItem__PropsItem">
-          <span className="GoodItem__PropsItem--title">RAM</span>
-          <span className="GoodItem__PropsItem--value">
-            {good.ram ? good.ram : '-'}
-          </span>
-        </div>
+        <GoodItemProp name="Screen" value={good.screen} />
+        <GoodItemProp name="Capacity" value={good.capacity} />
+        <GoodItemProp name="RAM" value={good.ram} />
       </section>
 
       <section className="GoodItem__Buttons">

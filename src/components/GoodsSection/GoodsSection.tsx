@@ -83,8 +83,7 @@ export const GoodsSection = () => {
         }}
       />
     );
-  };
-
+  }
 
   return (
     <>
