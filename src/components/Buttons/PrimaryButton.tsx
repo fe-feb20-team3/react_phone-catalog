@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo} from 'react';
 import './Buttons.scss';
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,10 @@ interface Props {
 export const PrimaryButton: React.FC<Props> = ({ id }) => {
   const dispatch = useDispatch();
   const cart = useSelector(getCartGoods);
-  const status = cart.some(good => good.id === id);
+  const status = useMemo(
+    () => cart.some(good => good.id === id),
+    [cart],
+  );
 
   return (
     <button
