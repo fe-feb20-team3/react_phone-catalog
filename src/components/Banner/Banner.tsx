@@ -87,14 +87,19 @@ export const BannerSlider: React.FC = () => {
                 className="Banner__Content-image"
                 key={image.position}
               >
-                <img
-                  src={image.path}
-                  alt={image.alt}
-                  style={{
-                    width: `${imageWidth}px`,
-                  }}
-                  className="Banner__Image--current"
-                />
+                <picture>
+                  <source srcSet={image.imgJXR} type="image/vnd.ms-photo" />
+                  <source srcSet={image.imgJP2} type="image/jp2" />
+                  <source srcSet={image.imgWEBP} type="image/webp" />
+                  <img
+                    srcSet={image.imgUrl}
+                    alt={image.alt}
+                    className="Banner__Image--current"
+                    style={{
+                      width: `${imageWidth}px`,
+                    }}
+                  />
+                </picture>
               </li>
             ))}
           </ul>

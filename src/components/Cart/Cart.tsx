@@ -56,11 +56,27 @@ export const Cart = () => {
           <h1 className="Cart__EmptyTitle">
             Cart is empty :(
           </h1>
-          <img
-            src="images/emptyCart.png"
-            alt="Empty Cart"
-            className="Cart__EmptyImage"
-          />
+          <picture>
+            <source srcSet="./images/emptyCart.jxr" type="image/vnd.ms-photo" />
+            <source srcSet="./images/emptyCart.jp2" type="image/jp2" />
+            <source srcSet="./images/emptyCart.webp" type="image/webp" />
+            <img
+              srcSet="./images/emptyCart.jpeg"
+              alt="Cart is empty"
+              className="Cart__EmptyImage"
+            />
+
+          </picture>
+          <picture>
+            <source srcSet="./images/jxr/emptyCart.jxr" type="image/vnd.ms-photo" />
+            <source srcSet="./images/jp2/emptyCart.jp2" type="image/jp2" />
+            <source srcSet="./images/webp/emptyCart.webp" type="image/webp" />
+            <img
+              srcSet="./images/jpeg/emptyCart.jpeg"
+              alt="Cart is empty"
+              className="Cart__EmptyImage"
+            />
+          </picture>
           <div className="Cart__ButtonContainer">
             <Link className="Cart__GoShop" to="/">
               Go to shop

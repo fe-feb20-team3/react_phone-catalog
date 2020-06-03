@@ -3,10 +3,15 @@ import './NotAvailable.scss';
 
 export const NotAvailable = () => (
   <div className="NotAvailable">
-    <img
-      src="images/notAvailable.jpg"
-      alt="Goods not found"
-      className="NotAvailable__Image"
-    />
+    <picture>
+      <source srcSet="./images/jxr/notAvailable.jxr" type="image/vnd.ms-photo" />
+      <source srcSet="./images/jp2/notAvailable.jp2" type="image/jp2" />
+      <source srcSet="./images/webp/notAvailable.webp" type="image/webp" />
+      <img
+        srcSet="./images/jpeg/notAvailable.jpeg"
+        alt="Goods not available"
+        className="NotAvailable__Image"
+      />
+    </picture>
   </div>
 );

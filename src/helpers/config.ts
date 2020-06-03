@@ -1,7 +1,25 @@
-export const Banners: Banners[] = [
-  { alt: 'First banner', path: 'images/banner.jpg' },
-  { alt: 'Second banner', path: 'images/banner2.jpg' },
-  { alt: 'Third banner', path: 'images/banner3.jpg' },
+export const Banners: Banner[] = [
+  {
+    alt: 'First banner',
+    imgUrl: './images/jpeg/banner.jpg',
+    imgJXR: './images/jxr/banner.jxr',
+    imgJP2: './images/jp2/banner.jp2',
+    imgWEBP: './images/webp/banner.webp',
+  },
+  {
+    alt: 'Second banner',
+    imgUrl: './images/jpeg/banner2.jpg',
+    imgJXR: './images/jxr/banner2.jxr',
+    imgJP2: './images/jp2/banner2.jp2',
+    imgWEBP: './images/webp/banner2.webp',
+  },
+  {
+    alt: 'Third banner',
+    imgUrl: './images/jpeg/banner3.jpg',
+    imgJXR: './images/jxr/banner3.jxr',
+    imgJP2: './images/jp2/banner3.jp2',
+    imgWEBP: './images/webp/banner3.webp',
+  },
 ];
 
 export const PER_PAGE_SETTINGS = [
@@ -78,4 +96,3 @@ export const ITEM_TECH_SPECS: ItemTechType[] = [
     order: 'detail',
   },
 ];
-

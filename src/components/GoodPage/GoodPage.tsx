@@ -128,20 +128,30 @@ export const GoodPage = () => {
                         key={image}
                       >
                         <a href="./#" onClick={e => handleImages(e, i)}>
-                          <img
-                            src={image}
-                            alt={goodDetail.name}
-                            className="GoodPage__Image"
-                          />
+                          <picture>
+                            <source srcSet={`./img/phones-jxr/${goodDetail.id}.${i}.jxr`} type="image/vnd.ms-photo" />
+                            <source srcSet={`./img/phones-jp2/${goodDetail.id}.${i}.jp2`} type="image/jp2" />
+                            <source srcSet={`./img/phones-webp/${goodDetail.id}.${i}.webp`} type="image/webp" />
+                            <img
+                              srcSet={`./img/phones-jpeg/${goodDetail.id}.${i}.jpeg`}
+                              alt={goodDetail.name}
+                              className="GoodPage__Image"
+                            />
+                          </picture>
                         </a>
                       </li>
                     ))}
                   </ul>
-                  <img
-                    src={goodDetail.images[activeImageIndex]}
-                    alt={goodDetail.name}
-                    className="GoodPage__ImageBig"
-                  />
+                  <picture>
+                    <source srcSet={`./img/phones-jxr/${goodDetail.id}.${activeImageIndex}.jxr`} type="image/vnd.ms-photo" />
+                    <source srcSet={`./img/phones-jp2/${goodDetail.id}.${activeImageIndex}.jp2`} type="image/jp2" />
+                    <source srcSet={`./img/phones-webp/${goodDetail.id}.${activeImageIndex}.webp`} type="image/webp" />
+                    <img
+                      srcSet={`./img/phones-jpeg/${goodDetail.id}.${activeImageIndex}.jpeg`}
+                      alt={goodDetail.name}
+                      className="GoodPage__ImageBig"
+                    />
+                  </picture>
                 </section>
               </div>
               <div className="GoodPage__Column">

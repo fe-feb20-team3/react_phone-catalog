@@ -39,31 +39,40 @@ interface GoodDetail {
   };
 }
 
-interface SitemapLink {
-  name: string;
-  url: string;
-  title?: string;
-  type?: string;
-  exact?: boolean;
-  imgUrl?: string;
-  external?: boolean;
-  children?: Link[];
-}
-
 interface Link {
   name: string;
   url: string;
   title?: string;
   type?: string;
   exact?: boolean;
-  imgUrl?: string;
   external?: boolean;
+  imgUrl?: string;
+  imgJXR?: string;
+  imgJP2?: string;
+  imgWEBP?: string;
 }
 
-interface Banners {
-  path: string;
+interface SitemapLink {
+  name: string;
+  url: string;
+  title?: string;
+  type?: string;
+  exact?: boolean;
+  external?: boolean;
+  children?: Link[];
+  imgUrl?: string;
+  imgJXR?: string;
+  imgJP2?: string;
+  imgWEBP?: string;
+}
+
+interface Banner {
+  alt: string;
   position?: number;
-  alt?: string;
+  imgUrl: string;
+  imgJXR?: string;
+  imgJP2?: string;
+  imgWEBP?: string;
 }
 
 interface SortType {

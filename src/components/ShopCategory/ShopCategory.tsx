@@ -25,11 +25,16 @@ export const ShopCategory = () => {
                 <div
                   className="Category__ImageContainer"
                 >
-                  <img
-                    src={link.imgUrl}
-                    alt={link.title}
-                    className="Category__Image"
-                  />
+                  <picture>
+                    <source srcSet={link.imgJXR} type="image/vnd.ms-photo" />
+                    <source srcSet={link.imgJP2} type="image/jp2" />
+                    <source srcSet={link.imgWEBP} type="image/webp" />
+                    <img
+                      srcSet={link.imgUrl}
+                      alt={link.title}
+                      className="Category__Image"
+                    />
+                  </picture>
                 </div>
                 <div className="Category__Info">
                   <h3 className="Category__InfoType Category__Paragraph">
