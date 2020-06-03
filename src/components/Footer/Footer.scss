@@ -1,0 +1,49 @@
+@import '../../style/utils';
+
+.Footer {
+  box-sizing: border-box;
+  position: relative;
+  height: 5rem;
+
+  @media screen and (max-width: $screen-extra-small) {
+    height: 10rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 1px;
+    width: 100%;
+    background-color: $color-elements;
+  }
+
+  &__Content {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr 2.5rem;
+    align-items: center;
+    height: 4rem;
+    box-sizing: border-box;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    @media screen and (max-width: $screen-extra-small) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+  }
+
+  &__Link {
+    position: relative;
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    align-items: center;
+    color: $color-secondary;
+    text-decoration: none;
+
+    @media screen and (max-width: $screen-extra-small) {
+      margin-bottom: 1rem;
+    }
+  }
+}

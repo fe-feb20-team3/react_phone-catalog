@@ -1,0 +1,19 @@
+@import '../../style/utils';
+
+.BackToTop {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  transform: translateY(4rem);
+  transition: all 0.5s;
+  background-color: rgba($color: $color-white, $alpha: 0.2);
+
+  &--visible {
+    transform: translateY(0);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: rgba($color: $color-white, $alpha: 0.6);
+  }
+}

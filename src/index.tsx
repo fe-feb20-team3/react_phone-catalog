@@ -1,9 +1,18 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
 
-import App from './App';
+import './style/index.scss';
+import store from './store';
+import { App } from './App';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
+const Root = () => (
+  <Provider store={store}>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </Provider>
 );
+
+ReactDOM.render(<Root />, document.getElementById('root'));

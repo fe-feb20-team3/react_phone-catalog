@@ -1,0 +1,130 @@
+import React, { useState, useRef, useEffect } from 'react';
+import './Banner.scss';
+import cn from 'classnames';
+
+import { Banners } from '../../helpers';
+
+export const BannerSlider: React.FC = () => {
+  const bannerImages = Banners.map((image, i) => ({
+    ...image,
+    position: i + 1,
+  }));
+
+  const [currentPosition, setcurrentPosition] = useState(1);
+  const [left, setLeft] = useState(0);
+  const [imageWidth, setImageWidth] = useState(1040);
+  const imageGap = 16;
+  const myWidth = useRef<HTMLDivElement>(null);
+
+  const handleSlide = (path: number) => {
+    const newLeftPosition = (imageWidth + imageGap) * -path;
+
+    if (currentPosition === bannerImages.length && path === 1) {
+      setcurrentPosition(1);
+      setLeft(0);
+
+      return;
+    }
+
+    if (currentPosition === 1 && path === -1) {
+      setcurrentPosition(bannerImages.length);
+      setLeft(((imageWidth + imageGap) * path) * (bannerImages.length - 1));
+
+      return;
+    }
+
+    setcurrentPosition(currentPosition + path);
+    setLeft(left + newLeftPosition);
+  };
+
+  const chooseImages = (position: number) => {
+    if (position === 1) {
+      setLeft(0);
+      setcurrentPosition(1);
+
+      return;
+    }
+
+    const newLoeftPosition = (((position - 1) * imageWidth) + ((position - 1) * imageGap)) * -1;
+
+    setLeft(newLoeftPosition);
+    setcurrentPosition(position);
+  };
+
+  useEffect(() => {
+    const width = (myWidth.current?.offsetWidth || 0);
+    const buttonWidth = 32;
+    const gapWidth = 16;
+
+    setImageWidth(width - (buttonWidth * 2) - (gapWidth * 2));
+  }, [myWidth]);
+
+  return (
+    <div
+      className="Banner"
+      ref={myWidth}
+    >
+      <div
+        className="Banner__Slider"
+      >
+        <button
+          type="button"
+          className="Banner__Button"
+          onClick={() => handleSlide(-1)}
+        >
+          <div className="Banner__Image Banner__Image--arrow-left" />
+        </button>
+
+        <div className="Banner__Container">
+          <ul
+            className="Banner__Content"
+            style={{
+              transform: `translateX(${left}px)`,
+            }}
+          >
+            {bannerImages.map(image => (
+              <li
+                className="Banner__Content-image"
+                key={image.position}
+              >
+                <picture>
+                  <source srcSet={image.imgJXR} type="image/vnd.ms-photo" />
+                  <source srcSet={image.imgJP2} type="image/jp2" />
+                  <source srcSet={image.imgWEBP} type="image/webp" />
+                  <img
+                    srcSet={image.imgUrl}
+                    alt={image.alt}
+                    className="Banner__Image--current"
+                    style={{
+                      width: `${imageWidth}px`,
+                    }}
+                  />
+                </picture>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <button
+          type="button"
+          className="Banner__Button"
+          onClick={() => handleSlide(1)}
+        >
+          <div className="Banner__Image Banner__Image--arrow-right" />
+        </button>
+      </div>
+      <div className="Banner__Position-container">
+        {bannerImages.map(image => (
+          <span
+            key={image.position}
+            className={cn({
+              'Banner__Position--active': image.position === currentPosition,
+            },
+            'Banner__Position')}
+            onClick={() => chooseImages(image.position)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};

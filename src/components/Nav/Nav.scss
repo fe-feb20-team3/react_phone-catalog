@@ -1,0 +1,60 @@
+@import '../../style/utils';
+
+.Nav {
+  height: 100%;
+
+  &__List {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+
+    @media screen and (max-width: $screen-extra-small) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__Item {
+    list-style: none;
+    margin-left: 4rem;
+
+    @media screen and (max-width: $screen-medium) {
+      margin-left: 2rem;
+    }
+
+    @media screen and (max-width: $screen-extra-small) {
+      margin: 1rem 0 0;
+    }
+  }
+
+  &__Link {
+    @extend %uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    align-content: center;
+    color: $color-secondary;
+    text-decoration: none;
+    @include hoverAndFocus(3px, $color-primary, $color-primary);
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+    }
+
+    &--active {
+      color: $color-primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

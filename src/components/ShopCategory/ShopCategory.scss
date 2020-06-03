@@ -1,0 +1,73 @@
+@import '../../style/utils';
+
+.Category {
+  margin: 0 auto 5rem;
+  width: 100%;
+
+  &__List {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    list-style-type: none;
+
+    @media screen and (max-width: $screen-small) {
+      grid-template-columns: 1fr;
+      margin: 0 auto;
+    }
+  }
+
+  &__Link {
+    text-decoration: none;
+    display: block;
+
+    &:hover .Category__Image {
+      transform: scale(1.25);
+    }
+  }
+
+  &__Image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.8s;
+  }
+
+  &__ImageContainer {
+    overflow: hidden;
+    display: flex;
+  }
+
+  &__Title {
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+    color: $color-primary;
+
+  }
+
+  &__Info {
+    margin-top: 1.5rem;
+  }
+
+  &__InfoType {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $color-primary;
+  }
+
+  &__InfoCount {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+
+
+  &__Paragraph {
+    margin: 0;
+    padding: 0;
+  }
+}

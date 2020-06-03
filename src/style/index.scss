@@ -1,0 +1,64 @@
+@import './font.scss';
+@import './utils';
+
+html,
+body,
+ul,
+h1,
+h2,
+h3,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Mont", sans-serif;
+  color: $color-primary;
+  scroll-behavior: smooth;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  @extend %body;
+}
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+picture {
+  display: flex;
+  width: 100%;
+}
+
+.container {
+  max-width: $screen-max;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 3.5rem - 5rem);
+  box-sizing: border-box;
+
+  @media screen and (max-width: $screen-extra-small) {
+    min-height: calc(100vh - 3.5rem - 10rem);
+  }
+}
+
+.section {
+  margin: 2rem 0;
+}

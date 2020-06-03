@@ -1,0 +1,189 @@
+@import '../../style/utils';
+
+@mixin iconSize {
+  &--small {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &--medium {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  &--large {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+@mixin imageSize {
+  &--small {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  &--medium {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &--large {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+.Icon {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  border: none;
+  background-color:transparent;
+  transition: color .2s;
+  text-shadow: 0 0 1px rgba($color-primary, .5);
+  overflow: hidden;
+  transform: translateZ(0);
+  outline: none;
+  cursor: pointer;
+  @include iconSize;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: $border-width solid transparent;
+    will-change: transform;
+    transition: transform .3s ease;
+    pointer-events: none;
+    transform: translateZ(0);
+    overflow: hidden;
+  }
+
+  &:before {
+    border-color: $color-primary transparent;
+    transform: skew(-90deg, 0);
+  }
+
+  &:after {
+    border-color: transparent $color-primary;
+    transform: skew(0,65deg);
+    transition: transform .4s;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-primary;
+
+    &:before,
+    &:after {
+      transform: skew(0, 0);
+    }
+  }
+
+  &__Border {
+    display: inline-flex;
+    border: 1px solid $color-icons;
+  }
+
+  &__Image {
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: $color-primary;
+    @include imageSize;
+
+    &--inactive {
+      background-color: $color-elements;
+    }
+
+    &--home {
+      mask-image: url(../../images/icons/home.svg);
+    }
+
+    &--search {
+      mask-image: url(../../images/icons/search.svg);
+    }
+
+    &--shopping-bag {
+      mask-image: url(../../images/icons/shopping-bag.svg);
+    }
+
+    &--favorites {
+      mask-image: url(../../images/icons/favorites.svg);
+    }
+
+    &--favorites-filled {
+      mask-image: url(../../images/icons/favorites-filled.svg);
+      background-color: $color-red;
+    }
+
+    &--minus {
+      mask-image: url(../../images/icons/minus.svg);
+    }
+
+    &--plus {
+      mask-image: url(../../images/icons/plus.svg);
+    }
+
+    &--close {
+      mask-image: url(../../images/icons/close.svg);
+    }
+
+    &--arrow-left {
+      mask-image: url(../../images/icons/chevron-arrow-left.svg);
+    }
+
+    &--arrow-right {
+      mask-image: url(../../images/icons/chevron-arrow-right.svg);
+    }
+
+    &--arrow-up {
+      mask-image: url(../../images/icons/chevron-arrow-up.svg);
+    }
+
+    &--arrow-down {
+      mask-image: url(../../images/icons/chevron-arrow-down.svg);
+    }
+  }
+
+  &__Tag {
+    position: absolute;
+    bottom: 45%;
+    left: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1rem;
+    height: 1rem;
+    color: $color-white;
+    font-weight: 600;
+    font-size: 9px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1rem;
+    background-color: $color-red;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    &--medium,
+    &--large {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 14px;
+      border: 2px solid $color-white;
+    }
+  }
+}

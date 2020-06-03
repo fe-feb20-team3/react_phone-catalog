@@ -1,0 +1,72 @@
+@import '../../style/utils';
+
+.Header {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, max-content) 1fr repeat(4, max-content);
+  align-items: center;
+  height: 3.5rem;
+  background-color: $color-white;
+  box-sizing: border-box;
+  border-bottom: 1px solid $color-elements;
+  z-index: 1;
+
+  @media screen and (max-width: $screen-medium) {
+    grid-template-columns: max-content 1fr repeat(3, max-content);
+  }
+
+  @media screen and (max-width: $screen-extra-small) {
+    grid-template-columns: max-content auto repeat(3, max-content);
+  }
+
+  &__Logo {
+    margin: 0 4rem 0 1rem;
+
+    @media screen and (max-width: $screen-medium) {
+      margin-right: 2rem;
+    }
+
+    @media screen and (max-width: $screen-extra-small) {
+      margin-right: 1rem;
+    }
+  }
+
+  &__HomeLink {
+    height: 100%;
+
+    @media screen and (max-width: $screen-medium) {
+      display: none;
+    }
+  }
+
+  &__Search {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-left: 1px solid $color-elements;
+  }
+
+  &__Nav {
+    @media screen and (max-width: $screen-medium) {
+      display: none;
+    }
+  }
+
+  &__Button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-left: 1px solid $color-elements;
+    border-bottom: 1px solid $color-elements;
+    overflow: hidden;
+
+    @media screen and (max-width: $screen-extra-small) {
+      display: none;
+    }
+  }
+}

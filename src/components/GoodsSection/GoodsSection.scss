@@ -1,0 +1,40 @@
+@import '../../style/utils';
+
+.GoodsSection {
+  &__Qty {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+
+  &__Control {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    justify-content: left;
+    margin: 5rem 0 1.5rem;
+
+    @media screen and (max-width: $screen-extra-small) {
+      justify-content: space-between;
+      margin-top: 3rem;
+    }
+
+    @media screen and (max-width: $screen-min) {
+      grid-auto-flow: row;
+    }
+  }
+
+  &__Select {
+    width: max-content;
+  }
+
+  &__SelectName {
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-secondary;
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../style/utils';
+
+.Breadcrumbs {
+  padding-top: 1.5rem;
+  color: $color-icons;
+
+  &__List {
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: $screen-extra-small) {
+      display: block;
+    }
+  }
+
+  &__Item {
+    list-style: none;
+
+    @media screen and (max-width: $screen-extra-small) {
+      display: inline;
+    }
+
+    &:first-child {
+      &::before {
+        display: none;
+      }
+    }
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0.5rem;
+      height: 1rem;
+      margin: 0 1rem;
+      mask-image: url(../../images/icons/chevron-arrow-right.svg);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      background-color: $color-icons;
+      transform: translateY(3px);
+    }
+  }
+
+  &__Link {
+    text-decoration: none;
+    color: $color-secondary;
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      color: $color-primary;
+    }
+  }
+}

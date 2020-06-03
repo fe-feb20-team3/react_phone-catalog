@@ -1,0 +1,11 @@
+.NotAvailable {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  opacity: 0.35;
+
+  &__Image {
+    max-width: 50vw;
+    margin: 0 auto;
+  }
+}
